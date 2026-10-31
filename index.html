@@ -1,0 +1,1399 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Weights Walk Out</title>
+<meta name="description" content="The security standard middle powers need before hosting frontier AI: host-government security proto-standards, explained.">
+<meta name="theme-color" content="#F6F2EA">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,400;1,8..60,500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F6F2EA;--paper2:#EEE8DC;--card:#FCFAF6;--ink:#1D2730;--ink2:#3A4650;--muted:#6B7480;--faint:#9EA4AA;--rule:#DED7CA;
+  --accent:#0F5E5A;--accent2:#2E7E77;--accent-soft:rgba(15,94,90,.08);--alert:#B4521F;--alert-soft:rgba(180,82,31,.08);
+  --p1:#0F5E5A;--p2a:#5B8B83;--p2b:#9A6A2E;--p2c:#56677F;
+  --band:#13201F;--band2:#1B2B29;--band-ink:#ECE6DA;--band-muted:#A7B0A9;--band-rule:#2E403D;
+  --shadow:0 1px 2px rgba(29,39,48,.04),0 10px 28px -18px rgba(29,39,48,.22);
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;--sans:Inter,system-ui,-apple-system,sans-serif;--mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 19px/1.65 var(--serif);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-underline-offset:2px}
+:focus-visible{outline:2px solid var(--alert);outline-offset:2px;border-radius:3px}
+p{margin:0 0 .85em}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:500;line-height:1.12;margin:0;letter-spacing:-.01em}
+button{font:inherit;color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.lbl{font:600 11px/1.4 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.lbl.ac{color:var(--accent)}.lbl.al{color:var(--alert)}
+.ui{font-family:var(--sans)}
+.small{font:400 13.5px/1.5 var(--sans);color:var(--muted)}
+.dek{font:italic 400 21px/1.5 var(--serif);color:var(--ink2);max-width:780px;margin:8px 0 20px}
+.figlbl{display:inline-block;padding-bottom:8px;margin-bottom:6px;position:relative}
+.figlbl::after{content:"";position:absolute;left:0;bottom:0;width:44px;height:2px;background:var(--alert)}
+.fig{margin:44px 0 10px}
+.src{font:400 12.5px/1.5 var(--sans);color:var(--muted)}.src a{color:var(--muted)}
+.btn{font:500 14px var(--sans);background:var(--card);border:1px solid var(--rule);border-radius:6px;padding:7px 14px;cursor:pointer;color:var(--ink)}
+.btn:hover{border-color:var(--ink2)}
+.btn.on,.btn[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.btn.pri{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.tag{display:inline-block;font:600 10.5px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;padding:5px 7px;border-radius:3px;background:var(--paper2);color:var(--muted);white-space:nowrap}
+.tag.ok{background:var(--accent-soft);color:var(--accent)}.tag.al{background:var(--alert-soft);color:var(--alert)}
+.card{background:var(--card);border:1px solid var(--rule);border-radius:6px;box-shadow:var(--shadow)}
+.twrap{overflow-x:auto;max-width:100%}
+.hyp{display:inline-block;font:600 10.5px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--alert);border:1px solid var(--alert);border-radius:3px;padding:4px 6px;vertical-align:2px;margin-right:6px}
+.bolt{display:inline-block;width:12px;height:14px;vertical-align:-1px}
+details.more{margin-top:14px;font-family:var(--sans);font-size:14px}
+details.more summary{cursor:pointer;color:var(--accent);font-weight:600}
+.rules{font:400 14px/1.55 var(--sans);color:var(--ink2);padding-left:18px}.rules li{margin:4px 0}
+
+/* top bar */
+.topbar{border-bottom:1px solid var(--rule)}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-top:12px;padding-bottom:12px;flex-wrap:wrap}
+.topbar .brand{font:600 11.5px var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--ink)}
+.topbar .brand span{color:var(--alert);margin-right:8px}
+.topbar a.cta{font:600 11.5px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--alert);text-decoration:none}
+.topbar a.cta:hover{text-decoration:underline}
+
+/* rail */
+.rail{position:fixed;left:0;top:0;bottom:0;width:76px;z-index:30;display:none;flex-direction:column;align-items:center;padding:22px 0 26px;background:var(--paper)}
+.rail .rh{font:600 9.5px var(--sans);letter-spacing:.16em;color:var(--muted);text-transform:uppercase;text-align:center;line-height:1.5;margin-bottom:14px}
+.rail ol{list-style:none;margin:0;padding:0;flex:1;display:flex;flex-direction:column;justify-content:space-between;position:relative;width:100%;align-items:center}
+.rail ol::before{content:"";position:absolute;left:50%;top:6px;bottom:6px;width:1.5px;margin-left:-.75px;background:var(--rule)}
+.rail .fill{position:absolute;left:50%;top:6px;width:1.5px;margin-left:-.75px;background:var(--accent);height:0;transition:height .15s}
+.rail li{position:relative;z-index:1}
+.rail a{display:flex;flex-direction:column;align-items:center;gap:9px;text-decoration:none;color:var(--faint)}
+.rail .dot{width:10px;height:10px;border-radius:50%;border:1.5px solid var(--faint);background:var(--paper);transition:all .2s}
+.rail .lab{writing-mode:vertical-rl;transform:rotate(180deg);font:600 9.5px var(--sans);letter-spacing:.16em;text-transform:uppercase;background:var(--paper);padding:3px 0}
+.rail a.done .dot{background:var(--accent);border-color:var(--accent)}
+.rail a.on{color:var(--ink)}
+.rail a.on .dot{background:var(--alert);border-color:var(--alert);box-shadow:0 0 0 4px var(--alert-soft)}
+.rail a:hover{color:var(--ink)}
+nav.top{position:sticky;top:0;z-index:20;background:var(--paper);border-bottom:1px solid var(--rule)}
+nav.top .in{display:flex;gap:4px;overflow-x:auto;padding:0 14px;scrollbar-width:none}
+nav.top a{flex:none;padding:11px 8px;font:600 10.5px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-bottom:2px solid transparent}
+nav.top a.on{color:var(--ink);border-bottom-color:var(--alert)}
+.prog{height:2px;background:var(--accent);width:0}
+@media (min-width:1180px){.rail{display:flex}body{padding-left:76px}nav.top{display:none}}
+
+/* hero */
+.hero{padding:64px 0 56px;border-bottom:1px solid var(--rule)}
+.hero .g{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:start}
+.hero h1{font-size:76px;line-height:1;font-weight:500;letter-spacing:-.02em;margin:18px 0 18px}
+.hero .hsub{font:italic 400 25px/1.4 var(--serif);color:var(--ink2);margin:0 0 26px;max-width:460px}
+.meta{font:400 13px/1.9 var(--sans);color:var(--muted)}
+.meta b{color:var(--ink);font-weight:600}
+.cue{display:inline-flex;gap:8px;align-items:center;margin-top:26px;font:600 11.5px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--alert);text-decoration:none;border-bottom:1px solid var(--alert);padding-bottom:3px}
+.prose{max-width:690px}
+.drop::first-letter{float:left;font:500 74px/.82 var(--serif);margin:7px 10px 0 0;color:var(--ink)}
+.clist{display:flex;flex-wrap:wrap;gap:4px 18px;margin:28px 0 0;padding:16px 0 0;list-style:none;border-top:1px solid var(--rule)}
+.clist a{font:500 14px var(--sans);color:var(--ink2);text-decoration:none}
+.clist a span{font:500 12px var(--mono);color:var(--alert);margin-right:6px}
+.clist a:hover{color:var(--accent)}
+
+/* chapters */
+section.ch{padding:16px 0 30px;border-bottom:1px solid var(--rule);scroll-margin-top:40px}
+.spread{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:start;padding:72px 0 8px}
+.spread h2{font-size:54px;line-height:1.04;font-weight:500;letter-spacing:-.02em}
+.spread h2 .n{font:500 14px var(--sans);letter-spacing:.04em;color:var(--ink2);margin-right:8px;vertical-align:.9em}
+.spread .eb{margin-bottom:14px}
+.take{margin:44px 0 12px;padding-top:16px;border-top:1px solid var(--rule);max-width:860px}
+.take .lbl{color:var(--alert)}
+.take p{font:italic 400 22px/1.45 var(--serif);color:var(--ink);margin:6px 0 0}
+
+/* 00 */
+.risks{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;margin-top:6px}
+.risk{border-top:2px solid var(--ink);padding-top:14px}
+.risk h3{font-size:25px;margin:8px 0 10px}
+.risk p{font-size:17px;line-height:1.55;color:var(--ink2)}
+.risk .fx{font:400 14px/1.5 var(--sans);color:var(--ink2);border-top:1px solid var(--rule);padding-top:10px}
+.risk .fx b{color:var(--accent)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin:52px 0 8px}
+.stat{border-top:1.5px solid var(--ink);padding-top:12px;position:relative}
+.stat::before{content:"";position:absolute;top:-1.5px;left:0;width:36px;height:1.5px;background:var(--alert)}
+.stat .v{font:500 44px/1 var(--serif);letter-spacing:-.02em}
+.stat .u{font:italic 400 19px var(--serif);color:var(--alert);margin-left:4px}
+.stat p{font:400 14px/1.5 var(--sans);color:var(--ink2);margin:10px 0 6px}
+.stat a{font:400 12px var(--sans);color:var(--muted)}
+.pull{margin:52px 0 0;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px}
+.pull blockquote{margin:0;font:italic 400 23px/1.5 var(--serif);color:var(--ink);border-left:2px solid var(--alert);padding-left:22px}
+
+/* 01 matrix */
+.mtx{display:grid;grid-template-columns:150px repeat(4,minmax(0,1fr));margin:14px 0 26px;border-top:2px solid var(--ink)}
+.mtx > div{padding:11px 12px;border-bottom:1px solid var(--rule);font:400 14px/1.45 var(--sans);color:var(--ink2)}
+.mtx .rh{font:600 10.5px/1.4 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.mtx .ttl{font:500 20px/1.2 var(--serif);color:var(--ink)}
+.mtx .stage{font:500 18px/1.25 var(--serif);color:var(--ink)}
+.mtx .gapc{background:var(--alert-soft)}
+.fixc{color:var(--accent)!important;font-weight:600!important}
+/* scrolly */
+.scrolly{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:48px;margin-top:22px}
+.stage{position:sticky;top:24px;align-self:start}
+.steps .step{min-height:66vh;display:flex;flex-direction:column;justify-content:center;opacity:.32;transition:opacity .3s}
+.steps .step.on{opacity:1}
+.steps .step:first-child{min-height:44vh;justify-content:flex-start;padding-top:10px}
+.steps .step:last-child{min-height:60vh}
+.step h4{font-size:32px;margin:8px 0 10px}
+.step p{font-size:18px;color:var(--ink2)}
+.dashes{display:flex;gap:7px;align-items:center;margin-bottom:12px;flex-wrap:wrap}
+.dashes button{width:30px;height:4px;border-radius:2px;border:0;padding:0;background:var(--rule);cursor:pointer}
+.dashes button.on{background:var(--alert);width:44px}
+.dashes button.done{background:var(--ink2)}
+.dashes .lbl{margin-left:10px;color:var(--alert)}
+.mstep{display:none}
+.lanes{padding:14px 16px 10px;overflow:hidden}
+.lhead,.lane{display:grid;grid-template-columns:200px 1fr;gap:12px;align-items:center}
+.lhead .cps{position:relative;height:36px}
+.lhead .cp{position:absolute;transform:translateX(-50%);text-align:center;font:600 9.5px/1.25 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);width:82px;top:2px}
+.cpsh{display:none}
+.lane{min-height:32px;border-top:1px solid var(--rule)}
+.lane .nm{font:400 13px/1.3 var(--sans);color:var(--ink2);padding:5px 0}
+.lane .nm b{font:500 11px var(--mono);color:var(--muted);margin-right:5px}
+.track{position:relative;height:30px}
+.track::before{content:"";position:absolute;left:0;right:0;top:58%;border-top:1.5px dotted #b9c3c2}
+.track .tk{position:absolute;top:58%;width:5px;height:5px;margin:-3px 0 0 -2.5px;border-radius:50%;background:var(--faint)}
+.track .tk.tr8{width:11px;height:11px;margin:-6px 0 0 -5.5px;background:var(--card);border:1.5px solid var(--alert)}
+.track .hubz{position:absolute;top:3px;bottom:3px;border-radius:4px;background:var(--accent-soft)}
+.ship{position:absolute;top:50%;width:26px;height:16px;margin:-11px 0 0 -13px;color:var(--ink2);transition:left 1.25s cubic-bezier(.3,.6,.4,1);z-index:2}
+.ship svg{display:block;width:26px;height:16px;animation:bob 1.7s ease-in-out infinite;transform-origin:50% 80%}
+.ship.stop{color:var(--accent)}.ship.late{color:var(--alert)}.ship.thru{color:#8a2f12}
+.ship.stop svg,.ship.late svg{animation:none;transform:rotate(-6deg)}
+.ship .x{position:absolute;right:-8px;top:-7px;font:700 11px var(--sans);opacity:0;transition:opacity .3s}
+.ship.stop .x,.ship.late .x{opacity:1}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-1.5px) rotate(-2.5deg)}}
+.res{position:absolute;top:50%;transform:translateY(-50%);font:600 10.5px var(--sans);letter-spacing:.04em;white-space:nowrap;opacity:0;transition:opacity .3s;background:var(--card);padding:1px 4px;border-radius:3px;z-index:3}
+.res.show{opacity:1}
+.tallies{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:16px}
+.tal{border-top:1.5px solid var(--ink);padding-top:8px}
+.tal b{display:block;font:500 34px/1 var(--serif)}
+.tal span{display:block;font:400 12.5px/1.4 var(--sans);color:var(--muted);margin-top:4px}
+.tal.a b{color:var(--accent)}.tal.w b{color:var(--alert)}.tal.g b{color:#8a2f12}
+.leg{display:flex;flex-wrap:wrap;gap:16px;font:400 12.5px var(--sans);color:var(--muted);margin-top:10px;align-items:center}
+.leg i{display:inline-block;vertical-align:middle;margin-right:6px}
+.tryit{margin-top:34px;padding-top:18px;border-top:1px solid var(--rule)}
+.steps .tryit{margin-top:0;min-height:80vh;padding-top:30vh;border-top:0}
+.steps .tryit .meas{grid-template-columns:1fr}
+.meas{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:8px;margin:12px 0}
+.mt{display:flex;gap:11px;align-items:flex-start;text-align:left;background:var(--card);border:1px solid var(--rule);border-radius:6px;padding:10px 12px;cursor:pointer;font:400 13.5px/1.4 var(--sans)}
+.mt .sw{flex:none;width:30px;height:17px;border-radius:99px;background:var(--paper2);border:1px solid var(--rule);position:relative;margin-top:1px}
+.mt .sw::after{content:"";position:absolute;left:2px;top:2px;width:11px;height:11px;border-radius:50%;background:var(--faint);transition:left .2s}
+.mt[aria-pressed="true"]{border-color:var(--accent)}
+.mt[aria-pressed="true"] .sw{background:var(--accent);border-color:var(--accent)}
+.mt[aria-pressed="true"] .sw::after{left:15px;background:#fff}
+.mt b{display:block;font-weight:600;color:var(--ink)}
+.mt i{font-style:normal;font-size:12px;color:var(--muted)}
+
+/* 02 game */
+.game{display:grid;grid-template-columns:minmax(0,.88fr) minmax(0,1.4fr);gap:20px;margin-top:10px}
+.game .card{padding:18px 20px}
+.prof{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 6px}
+.law{border-top:1px solid var(--rule);padding:9px 0}
+.law .top{display:flex;justify-content:space-between;gap:8px;align-items:center}
+.law .nm{font:500 14px/1.3 var(--sans)}
+.law .nm i{font:500 11px var(--mono);font-style:normal;color:var(--muted);margin-right:6px}
+.law summary{font:400 12px var(--sans);color:var(--muted);cursor:pointer;margin-top:3px}
+.law .ev{font:400 13px/1.5 var(--sans);color:var(--ink2);margin-top:5px}
+.lvl{display:inline-flex;border:1px solid var(--rule);border-radius:5px;overflow:hidden;flex:none}
+.lvl button{border:0;background:var(--card);padding:3px 8px;font:500 11px var(--sans);cursor:pointer;color:var(--muted)}
+.lvl button:disabled{cursor:default}
+.lvl button[aria-pressed="true"][data-v="0"]{background:var(--alert-soft);color:var(--alert)}
+.lvl button[aria-pressed="true"][data-v="1"]{background:var(--paper2);color:var(--ink)}
+.lvl button[aria-pressed="true"][data-v="2"]{background:var(--accent);color:#fff}
+.rt{font:600 10px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;padding:4px 6px;border-radius:3px;white-space:nowrap}
+.r-in{background:var(--accent-soft);color:var(--accent)}.r-pa{background:var(--paper2);color:var(--ink2)}.r-ga{background:var(--alert-soft);color:var(--alert)}.r-un{background:var(--paper2);color:var(--muted)}
+.stabs{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-bottom:1px solid var(--rule);margin-bottom:16px}
+.stab{text-align:left;background:none;border:0;border-bottom:2px solid transparent;padding:6px 10px 10px 0;cursor:pointer}
+.stab b{display:block;font:500 19px var(--serif)}
+.stab span{display:block;font:400 12px/1.35 var(--sans);color:var(--muted);margin-top:3px}
+.stab[aria-pressed="true"]{border-bottom-color:var(--alert)}
+.scene{font:italic 400 18px/1.55 var(--serif);color:var(--ink2);margin-bottom:14px}
+.gdash{display:flex;gap:6px;align-items:center;margin-bottom:6px}
+.gdash i{width:30px;height:4px;border-radius:2px;background:var(--rule)}
+.gdash i.done{background:var(--ink2)}.gdash i.cur{background:var(--alert);width:44px}
+.prompt{font:500 25px/1.25 var(--serif);margin:8px 0 14px}
+.choices{display:grid;gap:8px}
+.choice{text-align:left;border:1px solid var(--rule);border-left:3px solid var(--rule);background:var(--card);border-radius:5px;padding:11px 14px;cursor:pointer;font:400 14.5px/1.45 var(--sans);color:var(--ink)}
+.choice:hover:not(:disabled){border-left-color:var(--accent)}
+.choice:disabled{cursor:not-allowed;color:var(--muted);background:repeating-linear-gradient(135deg,transparent 0 6px,rgba(29,39,48,.025) 6px 12px)}
+.choice .lock{display:block;font:600 10.5px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--alert);margin-top:6px}
+.choice .uses{display:block;font:400 12px var(--sans);color:var(--muted);margin-top:5px}
+.choice.picked{border-left-color:var(--accent);background:var(--accent-soft)}
+.outc{margin-top:12px;font:italic 400 17px/1.5 var(--serif);color:var(--ink);border-left:2px solid var(--accent);padding-left:14px}
+.scorebar{display:flex;gap:12px;align-items:center;margin-top:16px;font:400 12.5px var(--sans);color:var(--muted)}
+.scorebar .bar{flex:1;height:5px;border-radius:3px;background:var(--paper2);overflow:hidden}
+.scorebar .bar i{display:block;height:100%;background:var(--accent);width:0;transition:width .3s}
+.ending{margin-top:16px;padding:16px 18px;border-radius:6px;border:1px solid var(--rule);border-top:3px solid var(--rule);background:var(--card)}
+.ending.good{border-top-color:var(--accent)}.ending.mid{border-top-color:var(--p2b)}.ending.bad{border-top-color:var(--alert)}
+.ending h4{font-size:27px;margin:8px 0 6px}
+.ending p{font-size:17px;color:var(--ink2)}
+.ending ul{margin:4px 0 8px;padding-left:18px;font:400 14px/1.5 var(--sans)}
+
+/* 03 machine */
+.machine{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:28px;margin-top:10px;align-items:start}
+.goods{display:grid;gap:8px}
+.good{display:grid;grid-template-columns:42px 1fr auto;gap:8px;align-items:center;text-align:left;background:var(--card);border:1px solid var(--rule);border-left:3px solid var(--rule);border-radius:5px;padding:12px 14px;cursor:pointer}
+.good .gn{font:500 13px var(--mono);color:var(--muted)}
+.good .gl{display:block;font:600 10.5px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.good .gt{display:block;font:400 21px/1.2 var(--serif);color:var(--muted)}
+.good:disabled{cursor:not-allowed}
+.good.built{border-left-color:var(--accent)}
+.good.built .gt{color:var(--ink)}
+.good.next{border-left-color:var(--alert)}
+.good.next .gt{color:var(--ink)}
+.lever{margin-top:18px;border:1px dashed var(--faint);border-radius:6px;padding:16px 18px;background:repeating-linear-gradient(135deg,transparent 0 7px,rgba(29,39,48,.025) 7px 14px)}
+.lever h4{font-size:22px;margin:6px 0 4px}
+.lever p{font:400 14px/1.5 var(--sans);color:var(--ink2);margin:0 0 12px}
+.fire{display:inline-flex;gap:8px;align-items:center;font:600 15px var(--sans);background:var(--alert);color:#fff;border:0;border-radius:5px;padding:11px 18px;cursor:pointer;box-shadow:0 0 0 4px var(--alert-soft)}
+.fire:hover{filter:brightness(1.08)}
+.meterc{padding:18px 20px}
+.meterc .st{display:flex;justify-content:space-between;align-items:baseline;margin:8px 0 10px}
+.meterc .st b{font:500 28px var(--serif)}
+.meterc .st span{font:500 13px var(--mono);color:var(--muted)}
+.mbar{height:6px;border-radius:3px;background:var(--paper2);overflow:hidden}
+.mbar i{display:block;height:100%;width:6%;background:var(--p2b);transition:width .35s,background .35s}
+.result{margin-top:14px;padding-top:12px;border-top:1px solid var(--rule);font:400 15px/1.5 var(--sans);color:var(--ink2);min-height:64px}
+.result b{font:500 19px var(--serif);display:block;margin-bottom:3px}
+.result.fail b{color:var(--alert)}.result.win b{color:var(--accent)}
+.chain{display:grid;grid-template-columns:repeat(5,1fr);gap:22px;margin-top:14px}
+.chain div{border-top:2px solid var(--alert);padding-top:10px;font:400 14px/1.45 var(--sans);color:var(--ink2);position:relative}
+.chain div:not(:last-child)::after{content:"\2192";position:absolute;right:-17px;top:4px;color:var(--alert);font-size:15px}
+.chain b{display:block;font:500 19px/1.25 var(--serif);color:var(--ink);margin-bottom:4px}
+
+/* 04 tree */
+.troot{display:block;margin:4px auto 0;max-width:430px;text-align:center;background:var(--ink);color:var(--paper);border-radius:5px;padding:10px 14px;font:500 18px var(--serif)}
+.tcols{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;position:relative;padding-top:28px;margin-top:14px}
+.tcols::before{content:"";position:absolute;top:0;left:16.6%;right:16.6%;height:14px;border:1.5px solid var(--rule);border-bottom:0;border-radius:6px 6px 0 0}
+.tcols::after{content:"";position:absolute;top:-14px;left:50%;height:14px;border-left:1.5px solid var(--rule)}
+.tpil{position:relative}
+.tpil::before{content:"";position:absolute;top:-14px;left:50%;height:14px;border-left:1.5px solid var(--rule)}
+.tph{text-align:center;border-top:2px solid var(--ink);padding:10px 4px 4px}
+.tph b{display:block;font:500 20px/1.2 var(--serif)}
+.tph span{font:600 10.5px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.treq{display:flex;flex-direction:column;gap:7px;margin:10px 0 0 12px;padding-left:14px;border-left:1.5px solid var(--rule)}
+.tr{position:relative;text-align:left;border:1px solid var(--rule);background:var(--card);border-radius:5px;padding:9px 12px;cursor:pointer;font:500 14px var(--sans)}
+.tr::before{content:"";position:absolute;left:-15px;top:50%;width:13px;border-top:1.5px solid var(--rule)}
+.tr i{font:500 11px var(--mono);font-style:normal;color:var(--muted);margin-right:6px}
+.tr[aria-pressed="true"]{border-color:var(--accent);box-shadow:inset 3px 0 0 var(--accent);color:var(--accent)}
+.tdet{margin-top:20px;padding:20px 22px}
+.tdet h4{font-size:30px;margin:6px 0 6px}
+.tdet .rq{font-size:18px;color:var(--ink2)}
+.subs{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}
+.sub{border:1px solid var(--rule);background:var(--card);border-radius:4px;padding:6px 11px;font:500 13px var(--sans);cursor:pointer;color:var(--ink2)}
+.sub[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.subx{font:italic 400 18px/1.5 var(--serif);border-left:2px solid var(--alert);padding-left:14px;min-height:30px}
+.kv2{display:grid;grid-template-columns:110px 1fr;gap:8px 12px;font:400 14px/1.5 var(--sans);margin-top:12px;color:var(--ink2)}
+.kv2 .k{font:600 10.5px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding-top:3px}
+/* toc */
+.tframe{display:grid;grid-template-columns:repeat(5,1fr);gap:22px;margin:12px 0 24px}
+.tf{border-top:1.5px solid var(--ink);padding-top:10px;font:400 13.5px/1.5 var(--sans);color:var(--ink2)}
+.tf.sol{border-top-color:var(--accent)}
+.tf h4{font:500 17px/1.25 var(--serif);color:var(--ink);margin:6px 0 5px}
+.tf p{margin:0}
+.walk{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;align-items:end;margin-bottom:14px}
+.walk .cap .lbl{color:var(--ink)}
+.walk .cap h4{font-size:28px;margin:6px 0 6px}
+.walk .cap p{font-size:17px;color:var(--ink2);margin:0;max-width:760px}
+.walk .nav{display:flex;gap:6px}
+.toc{position:relative;margin-top:8px}
+.toc svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.tg{display:grid;grid-template-columns:1fr 1fr 1fr 34px 1fr 1fr;column-gap:22px;row-gap:14px;position:relative}
+.tgh{font:600 10.5px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);padding-bottom:6px;border-bottom:1.5px solid var(--ink)}
+.tacc{grid-column:4;grid-row:1/6;position:relative}
+.tacc::before{content:"";position:absolute;left:50%;top:0;bottom:0;border-left:1.5px dashed var(--alert)}
+.tacc span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-90deg);white-space:nowrap;background:var(--paper);padding:3px 8px;font:600 9.5px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--alert)}
+.tn{position:relative;z-index:2;text-align:left;border:1px solid var(--rule);background:var(--card);border-radius:5px;padding:9px 11px;cursor:pointer;font:400 13.5px/1.35 var(--sans);transition:opacity .25s;box-shadow:var(--shadow)}
+.tn em{display:block;font:600 9.5px var(--sans);font-style:normal;letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px}
+.tn.p1{border-left:3px solid var(--p1)}.tn.p2a{border-left:3px solid var(--p2a)}.tn.p2b{border-left:3px solid var(--p2b)}.tn.p2c{border-left:3px solid var(--p2c)}
+.tn.p1 em{color:var(--p1)}.tn.p2a em{color:var(--p2a)}.tn.p2b em{color:var(--p2b)}.tn.p2c em{color:var(--p2c)}
+.tn.imp{grid-column:6;grid-row:2/6;background:var(--band);color:var(--band-ink);border-color:var(--band);display:flex;flex-direction:column;justify-content:center;gap:12px;cursor:default}
+.tn.imp b{font:500 21px/1.25 var(--serif);color:#fff}
+.tn.imp .tx{font:400 13.5px/1.5 var(--sans);color:var(--band-muted)}
+.tn.imp .btn{background:var(--alert);border-color:var(--alert);color:#fff;font-weight:600}
+.toc.focus .tn:not(.hl):not(.imp){opacity:.22}
+.toc.focus.impf .tn.imp{box-shadow:0 0 0 3px var(--alert)}
+.tn.hl{border-color:var(--ink2)}
+.tn.sel{background:var(--alert-soft)}
+.toc path{fill:none;stroke:var(--faint);stroke-width:1.4;opacity:.7}
+.toc path.x{stroke-dasharray:4 4;stroke:var(--accent);opacity:.9}
+.toc.focus path{opacity:.1}
+.toc.focus path.hl{opacity:1;stroke:var(--alert);stroke-width:2}
+.tocdet{margin-top:16px;padding:16px 20px;min-height:70px}
+.tocdet h4{font-size:22px;margin:4px 0 4px}
+.tov{margin-top:16px;padding:22px 24px;background:var(--band);color:var(--band-ink);border-radius:6px}
+.tov[hidden]{display:none}
+.tov .tg3{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:28px}
+.tov h4{font-size:21px;color:#fff;margin-bottom:6px}
+.tov ol,.tov ul{padding-left:18px;margin:6px 0;font:400 14px/1.55 var(--sans);color:var(--band-ink)}.tov li{margin:5px 0}
+.tov .lbl{color:#E7955F}
+.tov .btn{background:transparent;color:var(--band-ink);border-color:var(--band-rule)}
+.sig-w{font:600 10.5px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:#8FD0C8;margin:6px 0 0}.sig-l{font:600 10.5px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:#E7955F;margin:10px 0 0}
+.tbottom{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;margin-top:30px}
+.tbottom h4{font-size:21px;margin:6px 0 8px}
+.tbottom ul{margin:0;padding-left:18px;font:400 14px/1.55 var(--sans);color:var(--ink2)}.tbottom li{margin:5px 0}
+.tms{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;font:400 13.5px/1.45 var(--sans);color:var(--ink2)}
+.tms div{border-top:1.5px solid var(--ink);padding-top:7px}
+.tms b{display:block;font:500 17px var(--serif);color:var(--ink)}
+.tms i{display:block;font-style:normal;color:var(--muted);font-size:12.5px;margin-top:3px}
+
+/* 05 coalition */
+.cpanel{display:grid;grid-template-columns:minmax(0,1.8fr) minmax(0,1fr);gap:24px;margin-top:10px;align-items:start}
+.coal{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.zone h4{font-size:21px;margin:0 0 2px}
+.zone .zs{display:block;font:400 12.5px/1.4 var(--sans);color:var(--muted);margin-bottom:10px;padding-bottom:10px;border-bottom:1.5px solid var(--ink)}
+.actor{display:flex;justify-content:space-between;align-items:center;gap:8px;width:100%;text-align:left;border:1px solid var(--rule);border-left:3px solid var(--rule);background:var(--card);border-radius:5px;padding:9px 11px;cursor:pointer;font:500 13.5px/1.35 var(--sans);margin-bottom:7px}
+.actor .st{font:600 9.5px var(--sans);letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;color:var(--faint)}
+.actor.won{border-left-color:var(--accent)}
+.actor.won .st{color:var(--accent)}
+.actor[aria-pressed="true"]{box-shadow:0 0 0 2px var(--ink2)}
+.cside{position:sticky;top:24px}
+.cmeter{padding:18px 20px}
+.cmeter .st{display:flex;justify-content:space-between;align-items:baseline;margin:6px 0 10px}
+.cmeter .st b{font:500 26px var(--serif)}
+.cmeter .st span{font:500 13px var(--mono);color:var(--muted)}
+.cmeter .bar{height:6px;border-radius:3px;background:var(--paper2);position:relative;overflow:visible}
+.cmeter .bar i{display:block;height:100%;border-radius:3px;background:var(--accent);width:0;transition:width .4s}
+.cmeter .bar s{position:absolute;top:-4px;bottom:-4px;border-left:1.5px dashed var(--alert)}
+.cmeter .small{margin-top:10px}
+.adet{margin-top:14px;padding:18px 20px}
+.adet h4{font-size:23px;margin:6px 0 4px}
+.adet .kv2{grid-template-columns:1fr;gap:2px}
+.adet .kv2 .k{margin-top:8px}
+.notes{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;margin-top:52px}
+.notes div{border-top:1.5px solid var(--ink);padding-top:12px}
+.notes h4{font-size:22px;margin-bottom:8px}
+.notes ul{margin:0;padding-left:18px;font:400 14px/1.55 var(--sans);color:var(--ink2)}.notes li{margin:5px 0}
+.filters{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}
+.ladder{position:relative;margin-top:12px;padding-left:52px}
+.ladder::before{content:"";position:absolute;left:21px;top:8px;bottom:8px;width:1.5px;background:var(--rule)}
+.tier{font:600 11px var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--alert);margin:22px 0 8px;position:relative}
+.tier::before{content:"";position:absolute;left:-36px;top:3px;width:9px;height:9px;background:var(--alert);transform:rotate(45deg)}
+.rung{position:relative;display:block;width:100%;text-align:left;border:0;border-bottom:1px solid var(--rule);background:none;padding:12px 4px 12px 0;cursor:pointer;transition:opacity .2s}
+.rung .rk{position:absolute;left:-52px;top:10px;width:30px;height:30px;border-radius:50%;background:var(--paper);border:1.5px solid var(--faint);display:grid;place-items:center;font:500 12px var(--mono);color:var(--ink2)}
+.rung .rt1{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.rung b{font:500 21px/1.25 var(--serif)}
+.pchip{font:600 9.5px var(--sans);letter-spacing:.12em;text-transform:uppercase}
+.pc1{color:var(--p1)}.pc2a{color:var(--p2a)}.pc2b{color:var(--p2b)}.pc2c{color:var(--p2c)}.pcall{color:var(--muted)}
+.rung .kind{font:400 12px var(--sans);color:var(--muted)}
+.rung .rx{display:none;font:400 14.5px/1.55 var(--sans);color:var(--ink2);margin-top:6px;max-width:780px}
+.rung[aria-expanded="true"] .rx{display:block}
+.rung[aria-expanded="true"] .rk{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.rung:hover b{color:var(--accent)}
+.rung.dim{opacity:.25}
+
+/* 06 timeline */
+.tl{padding:16px 18px;min-width:780px}
+.tlr{display:grid;grid-template-columns:160px 1fr;align-items:center;min-height:40px}
+.tll{font:500 13.5px/1.25 var(--sans);padding-right:10px}
+.tlt{position:relative;height:40px}
+.tlph .tlt{height:30px}
+.ph{position:absolute;top:2px;height:24px;font:600 10px var(--sans);letter-spacing:.12em;text-transform:uppercase;display:flex;align-items:center;justify-content:center;color:var(--muted);border-bottom:1.5px solid var(--ink);white-space:nowrap;overflow:hidden}
+.tlax .tlt{height:22px;border-bottom:1px solid var(--rule)}
+.tlax span{position:absolute;transform:translateX(-50%);font:500 10.5px var(--mono);color:var(--muted);top:2px}
+.bar2{position:absolute;top:9px;height:22px;border-radius:3px;border:0;cursor:pointer;opacity:.92;padding:0 8px;color:#fff;font:600 11px var(--sans);text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.bar2:hover,.bar2.sel{opacity:1;box-shadow:0 0 0 2px var(--ink)}
+.dia{position:absolute;top:13px;width:12px;height:12px;margin-left:-6px;transform:rotate(45deg);background:var(--ink);border:2px solid var(--card);cursor:pointer;padding:0;z-index:2}
+.dia:hover,.dia.sel{background:var(--alert)}
+.gate{position:absolute;top:0;bottom:0;width:0;border-left:1.5px dashed var(--alert);pointer-events:none;opacity:.7}
+.gbtn{position:absolute;transform:translateX(-50%);font:500 10.5px var(--mono);background:var(--alert);color:#fff;border:0;border-radius:3px;padding:2px 6px;cursor:pointer}
+.gbtn.sel{outline:2px solid var(--ink)}
+.tldet{margin-top:14px;padding:16px 20px;min-height:70px}
+.tldet h4{font-size:22px;margin-bottom:4px}
+.tldet p{font:400 15px/1.5 var(--sans);color:var(--ink2);margin:0}
+
+/* debates + band */
+.debates{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:14px}
+.debates div{border-top:1.5px solid var(--ink);padding-top:10px;font:400 14px/1.55 var(--sans);color:var(--ink2)}
+.debates b{display:block;font:500 19px/1.25 var(--serif);color:var(--ink);margin-bottom:6px}
+.band{background:var(--band);color:var(--band-ink);border-top:3px solid var(--alert);margin-top:60px}
+.band .wrap{padding-top:64px;padding-bottom:70px}
+.band .g{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px}
+.band .lbl{color:#E7955F}
+.band h3{font-size:34px;color:#fff;margin:12px 0 12px}
+.band p{font-size:17px;color:var(--band-muted)}
+.band a{color:var(--band-ink)}
+.band .cta2{display:inline-block;margin:6px 0 14px;font:500 17px var(--serif);color:#fff;border-bottom:1px solid #fff;text-decoration:none}
+.band dl{margin:0;font-size:16px}
+.band dt{font:600 10.5px var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--band-ink);margin-top:14px}
+.band dd{margin:4px 0 0;color:var(--band-muted);font-size:16px;line-height:1.55}
+.band .srcs{margin-top:44px;padding-top:24px;border-top:1px solid var(--band-rule)}
+.srclist{columns:2;column-gap:40px;font:400 13px/1.5 var(--sans);padding-left:18px;color:var(--band-muted);margin:12px 0 0}
+.srclist li{break-inside:avoid;margin:0 0 6px}
+.srclist a{color:var(--band-muted)}
+.band .foot{margin-top:36px;font:400 12.5px var(--sans);color:var(--band-muted)}
+
+/* responsive */
+@media (max-width:980px){
+  .hero .g,.spread,.pull{grid-template-columns:1fr;gap:22px}
+  .spread{padding-top:54px}
+  .risks,.notes{grid-template-columns:1fr;gap:26px}
+  .stats{grid-template-columns:1fr 1fr}
+  .game,.machine,.tbottom,.cpanel{grid-template-columns:1fr}
+  .cside{position:static}
+  .tframe{grid-template-columns:1fr 1fr}
+  .tov .tg3{grid-template-columns:1fr}
+  .debates{grid-template-columns:1fr}
+  .band .g{grid-template-columns:1fr}
+  .chain{grid-template-columns:1fr;gap:16px}.chain div:not(:last-child)::after{content:"\2193";right:auto;left:0;top:auto;bottom:-20px}
+  .scrolly{grid-template-columns:1fr;gap:0}
+  .steps{display:none}
+  .mstep{display:block;margin-bottom:14px}
+  .mstep h4{font-size:24px;margin:6px 0 6px}
+  .mstep p{font-size:16.5px;color:var(--ink2);margin:0}
+  .stage{position:static}
+}
+@media (max-width:820px){
+  .tg{grid-template-columns:1fr;row-gap:8px}
+  .tgh,.tacc{display:none}
+  .toc svg{display:none}
+  .tn{grid-column:1!important;grid-row:auto!important}
+  .tn:not(.imp)::after{content:"\2193";position:absolute;left:50%;bottom:-18px;color:var(--muted);font-size:13px}
+  .tn.lt::after{content:"\2193  to impact"}
+  .tn.act{margin-top:16px}.tn.imp{margin-top:14px}
+  .mtx{grid-template-columns:110px repeat(4,minmax(130px,1fr));min-width:640px}
+  .walk{grid-template-columns:1fr}
+}
+@media (max-width:760px){
+  body{font-size:17.5px}
+  .wrap{padding:0 18px}
+  .hero h1{font-size:50px}.hero .hsub{font-size:21px}
+  .spread h2{font-size:38px}
+  .dek{font-size:19px}
+  .lhead,.lane{grid-template-columns:96px 1fr}
+  .lane .nm{font-size:11.5px}
+  .cpl{display:none}.cpsh{display:inline}
+  .lhead .cp{width:44px;font-size:8px;letter-spacing:.02em}
+  .res{display:none}
+  .tallies{grid-template-columns:1fr 1fr}
+  .stabs{grid-template-columns:1fr}
+  .stab{padding-bottom:8px}
+  .tcols{grid-template-columns:1fr;padding-top:10px}
+  .tcols::before,.tcols::after,.tpil::before{display:none}
+  .coal{grid-template-columns:1fr}
+  .srclist{columns:1}
+  .tframe{grid-template-columns:1fr}
+  .stat .v{font-size:36px}
+  .kv2{grid-template-columns:1fr;gap:2px}
+}
+@media (max-width:520px){.stats{grid-template-columns:1fr}}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="wrap"><span class="brand"><span>&#9670;</span>Mangrove Hackathon &middot; Middle Powers</span><a class="cta" href="Securing_Frontier_AI_Middle_Powers_2-pager.pdf" target="_blank" rel="noopener">Read our 2-pager &rarr;</a></div></div>
+
+<aside class="rail" aria-label="Chapters">
+  <div class="rh">Chapters<br>&darr;</div>
+  <ol id="rail"><span class="fill" id="rfillr"></span>
+    <li><a href="#c00"><span class="dot"></span><span class="lab">The risk</span></a></li>
+    <li><a href="#c01"><span class="dot"></span><span class="lab">Where it leaks</span></a></li>
+    <li><a href="#c02"><span class="dot"></span><span class="lab">The game</span></a></li>
+    <li><a href="#c03"><span class="dot"></span><span class="lab">Security first</span></a></li>
+    <li><a href="#c04"><span class="dot"></span><span class="lab">The fix</span></a></li>
+    <li><a href="#c05"><span class="dot"></span><span class="lab">Coalition</span></a></li>
+    <li><a href="#c06"><span class="dot"></span><span class="lab">Timeline</span></a></li>
+    <li><a href="#about"><span class="dot"></span><span class="lab">About</span></a></li>
+  </ol>
+</aside>
+
+<header class="hero">
+  <div class="wrap g">
+    <div>
+      <span class="lbl al">Track A, Regulation &middot; with Track C, Diplomacy</span>
+      <h1>The Weights Walk Out</h1>
+      <p class="hsub">The security standard middle powers need before hosting frontier AI</p>
+      <div class="meta"><b>Garg and Sussman</b><br>Snapshot, November 2026 &middot; For peer and judges review</div>
+      <a class="cue" href="#c00">Scroll to begin &darr;</a>
+    </div>
+    <div class="prose">
+      <span class="lbl ac">Host-government security proto-standards</span>
+      <p class="drop" style="margin-top:12px">Our project aims to produce well-evidenced, expert-endorsed "proto-standards" on what host governments must have in place before frontier AI is deployed on their soil. The lack of such endorsed standards is a significant blocker to trusted access: labs and partner governments have no shared basis for judging whether a middle power can host frontier AI securely, and existing frameworks such as RAND's model weight security levels stop at the lab.</p>
+      <p>We are aiming to convene experts from frontier labs, AI security institutes, think tanks, standard developers and middle-power governments to develop concrete, actionable recommendations on specific issues. It would use RAND's framework as the baseline, update the recommendations periodically as technology, threats and best practices evolve, and feed gaps back to standard developers. Host governments could voluntarily adopt the proto-standards to earn trusted access, while labs and partner governments could draw on or point to them when deciding where frontier models are hosted and on what terms.</p>
+      <p>Once proto-standards are endorsed, our project would provide technical assistance so host governments can meet them through their own laws and institutions. This explainer walks through our strategy and theory of change, the risks the proto-standards address, what they would cover, how a government would use them under pressure, and how they could be adopted.</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <ul class="clist">
+      <li><a href="#c00"><span>00</span>The risk</a></li>
+      <li><a href="#c01"><span>01</span>Where it leaks</a></li>
+      <li><a href="#c02"><span>02</span>You are Singapore</a></li>
+      <li><a href="#c03"><span>03</span>Skip security, lose the case</a></li>
+      <li><a href="#c04"><span>04</span>The fix</a></li>
+      <li><a href="#c05"><span>05</span>The coalition</a></li>
+      <li><a href="#c06"><span>06</span>What to build first</a></li>
+      <li><a href="#about"><span>&#9670;</span>About and sources</a></li>
+    </ul>
+  </div>
+</header>
+
+<nav class="top" aria-label="Chapters">
+  <div class="in" id="tnav"><a href="#c00">00 Risk</a><a href="#c01">01 Leaks</a><a href="#c02">02 Game</a><a href="#c03">03 Security first</a><a href="#c04">04 Fix</a><a href="#c05">05 Coalition</a><a href="#c06">06 Timeline</a><a href="#about">About</a></div>
+  <div class="prog" id="prog"></div>
+</nav>
+
+<main class="wrap">
+
+<!-- 00 -->
+<section class="ch" id="c00">
+  <div class="spread">
+    <div><div class="lbl eb">The risk</div><h2><span class="n">00</span>Hosting frontier AI opens three leaks.</h2></div>
+    <div class="prose">
+      <p>Frontier AI will increasingly be hosted in middle powers. Hosting brings three risks that a host government, not a lab, is best placed to manage.</p>
+      <p>Middle powers can gain leverage by offering security in exchange for access to frontier models, but only if they have adequate standards, trust and enforcement. Labs and partner governments increasingly treat security as the price of access: the more trusted a host, the higher the tier of access it gets (<a href="https://80000hours.org/podcast/episodes/anton-leicht-middle-powers-agi-left-behind/" target="_blank" rel="noopener">Leicht, 80,000 Hours</a>). Today's standards set what labs and data center operators must do. Nothing yet says what a host government must have in place.</p>
+    </div>
+  </div>
+  <div class="risks">
+    <div class="risk"><span class="lbl al">Risk 01</span><h3>Theft of model weights and algorithms</h3><p>Exfiltration of model weights or proprietary algorithms through technical, human (insider) or cyber routes, by nation-states or malicious actors.</p><div class="fx"><b>The proto-standard:</b> vetting, insider-threat programs, inspection authority, security-conditioned licensing and a clear offence.</div></div>
+    <div class="risk"><span class="lbl al">Risk 02</span><h3>Chip smuggling</h3><p>Controlled AI chips diverted through transit hubs using front companies, false end-user papers and payment trails, where domestic law, investigators and prosecutors are not equipped to stop it.</p><div class="fx"><b>The proto-standard:</b> AI-chip red flags, usable offences and a way to act on leads.</div></div>
+    <div class="risk"><span class="lbl al">Risk 03</span><h3>Incidents with no warning</h3><p>An unexpected or dangerous AI event, such as a hosted model used in a cyberattack, with no agreed way to raise a rapid alert across borders.</p><div class="fx"><b>The proto-standard:</b> reporting within hours, one lead agency and a tested channel to partners.</div></div>
+  </div>
+  <div class="stats">
+    <div class="stat"><span class="v">290k-1.6M</span><p>H100-equivalent chips estimated smuggled to China through 2025, up to a third of its AI compute</p><a href="https://epoch.ai/publications/chip-smuggling" target="_blank" rel="noopener">Epoch AI, 2026</a></div>
+    <div class="stat"><span class="v">0</span><span class="u">data centers</span><p>worldwide meeting the security level recommended for frontier hosting (SL4-SL5)</p><a href="https://framerusercontent.com/assets/MaKFDMpfboIYcF3z8qPDL6wYSc.pdf" target="_blank" rel="noopener">KIRA Center, 2025</a></div>
+    <div class="stat"><span class="v">78</span><span class="u">%</span><p>of surveyed security experts expect a state to steal frontier weights from a U.S. company before 2030 (n=27)</p><a href="https://ai-2027.com/supplements/security-forecast" target="_blank" rel="noopener">AI 2027 security forecast</a></div>
+    <div class="stat"><span class="v">~50</span><span class="u">%</span><p>of data center projects outside the U.S. are operated by U.S. companies, so hosting a site is not the same as controlling it</p><a href="https://arxiv.org/abs/2508.00932" target="_blank" rel="noopener">Richardson et al., 2025</a></div>
+  </div>
+  <div class="pull">
+    <div><span class="lbl al">Why this is a catastrophic risk</span></div>
+    <blockquote>Once frontier weights leave a secure site, every safeguard the developer built can be stripped out: safety training removed, the model fine-tuned for cyberattacks or biological weapons design, and copies run anywhere, with no way to recall them. Diverted chips do the same for capability itself: they let actors train frontier-scale models outside any testing, monitoring or treaty, which undermines the compute-based agreements most proposals for pacing frontier AI rely on. A single leak is irreversible, so prevention has to happen before hosting, not after.</blockquote>
+  </div>
+  <div class="take"><span class="lbl">So what for safety</span><p>Every frontier model or chip that leaks through a hub ends up outside any safety or verification regime. Security is the prerequisite for hosting frontier AI safely, and for trusted access.</p></div>
+</section>
+
+<!-- 01 -->
+<section class="ch" id="c01">
+  <div class="spread">
+    <div><div class="lbl eb">Where it leaks</div><h2><span class="n">01</span>Most diverted chips are likely never caught.</h2></div>
+    <div class="prose">
+      <p>Chips and model weights each pass through four stages on their way to a host country. At several of them, no host-government body owns the risk.</p>
+      <p>The tables below show, stage by stage, who covers the risk today, whether a host government is missing, and which proto-standard requirement would fill the gap.</p>
+    </div>
+  </div>
+  <div class="fig">
+    <div class="lbl figlbl">Stage by stage</div>
+    <div class="twrap"><div class="mtx" id="mtxChips"></div></div>
+    <div class="twrap"><div class="mtx" id="mtxW"></div></div>
+    <p class="small">Requirement numbers refer to the proto-standard in chapter 04.</p>
+  </div>
+  <div class="fig">
+    <div class="lbl figlbl">Run the shipments</div>
+    <p class="dek">Ten ships carrying AI servers try to slip through a middle-power hub, each running a scheme drawn from public cases. The checkpoints are chances to catch a scheme, not places on a map. Watch what gets through today, then add the proto-standard one measure at a time.</p>
+    <div class="scrolly" id="scrolly">
+      <div class="stage">
+        <div class="dashes" id="sdash"></div>
+        <div class="mstep" id="mstep"></div>
+        <div class="card lanes" id="lanes" aria-live="polite"></div>
+        <div class="leg"><span><i style="width:12px;height:4px;background:var(--accent)"></i>Stopped</span><span><i style="width:12px;height:4px;background:var(--alert)"></i>Caught after delivery</span><span><i style="width:12px;height:4px;background:#8a2f12"></i>Got through</span><span><i style="width:10px;height:10px;border-radius:50%;border:1.5px solid var(--alert)"></i>Leaves a trace here</span><span><i style="width:18px;height:10px;border-radius:3px;background:var(--accent-soft)"></i>Inside the hub</span></div>
+        <div class="tallies" id="tallies"></div>
+      </div>
+      <div class="steps" id="steps"></div>
+    </div>
+    <div class="tryit" id="tryit">
+      <div class="lbl al">Now you try</div>
+      <p class="small" style="margin-top:6px">Switch any measure on or off, then run the ships. Sources for the tricks: <a href="https://www.justice.gov/opa/pr/california-man-arrested-smuggling-more-300-million-export-controlled-computer-servers-china" target="_blank" rel="noopener">DOJ</a>, <a href="https://www.bbc.com/news/articles/cx2d9y18g73o" target="_blank" rel="noopener">BBC</a>, <a href="https://www.fdd.org/analysis/taiwans-chip-smuggling-case-shows-promise-for-allied-export-control-enforcement/" target="_blank" rel="noopener">FDD</a>, <a href="https://cset.georgetown.edu/publication/tracking-ai-chips/" target="_blank" rel="noopener">CSET</a>.</p>
+      <div class="meas" id="meas"></div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap"><button type="button" class="btn" id="simToday">All off</button><button type="button" class="btn" id="simAll">All on</button><button type="button" class="btn pri" id="simRun">&#9654; Run the ships</button></div>
+      <details class="more"><summary>How this works</summary><ul class="rules">
+        <li>Each scheme leaves traces at one or more checkpoints (the rings). Each measure works at one checkpoint. A ship stops at the first checkpoint where it leaves a trace and a measure is switched on, so one measure can catch several schemes.</li>
+        <li>The checkpoints are chances to catch a scheme, not places on a map: a bank payment and an export declaration happen in the same hub.</li>
+        <li>Two catches exist today without new measures: a false final destination can be caught by existing destination declarations, and one ship is caught after delivery through a tip-off, as in a real case. That two-in-ten rate is close to Epoch's assumption that about a quarter of diversion is detected (<a href="https://epoch.ai/publications/chip-smuggling" target="_blank" rel="noopener">Epoch AI</a>).</li>
+        <li>One ship (an insider at a legitimate buyer) gets through even with every measure on. No standard is perfect.</li>
+        <li>The tricks are illustrative patterns from the cited cases, not data. The counts are not probabilities.</li>
+      </ul></details>
+    </div>
+  </div>
+  <div class="take"><span class="lbl">So what for safety</span><p>Today, most diverted chips sail through a hub, and the few that are caught are caught late. With the proto-standard, most are stopped before they leave, while there is still time to keep frontier compute inside a safety regime.</p></div>
+</section>
+
+<!-- 02 -->
+<section class="ch" id="c02">
+  <div class="spread">
+    <div><div class="lbl eb">The game</div><h2><span class="n">02</span>You are Singapore. Make the call.</h2></div>
+    <div class="prose">
+      <p>You lead Singapore's response. Singapore is a transit hub for global trade and a fast-growing host for data centers, so all three risks land on your desk.</p>
+      <p>Choose a scenario and make three decisions. Your starting laws are Singapore's real laws as of October 2026, rated from public sources; expand any law for the evidence.</p>
+      <p class="small"><span class="hyp">Hypothetical</span>The scenarios are invented and depict no real lab, operator or company.</p>
+    </div>
+  </div>
+  <div class="fig">
+    <div class="lbl figlbl">The response room</div>
+    <p class="dek">Your laws decide your moves. Some of the best ones will be locked, and that is the point.</p>
+    <div class="game">
+      <div class="card">
+        <div class="lbl">Your laws</div>
+        <div class="prof" role="group" aria-label="Starting laws">
+          <button type="button" class="btn" data-p="today">Singapore today</button>
+          <button type="button" class="btn" data-p="std">With the proto-standard</button>
+          <button type="button" class="btn" data-p="custom">Custom</button>
+        </div>
+        <p class="small" id="profNote"></p>
+        <div id="laws"></div>
+      </div>
+      <div class="card">
+        <div class="stabs" role="group" aria-label="Scenario" id="stabs"></div>
+        <div id="play" aria-live="polite"></div>
+      </div>
+    </div>
+    <details class="more"><summary>How this works</summary><ul class="rules">
+      <li>Each scenario has three decisions with three possible moves. The strongest moves need specific laws at a set level; if your laws fall short, the move is locked and says what is missing.</li>
+      <li>Moves score 0 to 3. A total of 8 or 9 gives the best ending, 5 to 7 the middle ending, and 4 or less the worst.</li>
+      <li>"Singapore today" maps the ratings to levels: In place = Full, Partial = Partial, Gap or Unclear = Missing.</li>
+      <li>These are simple illustrative rules, not predictions.</li>
+    </ul></details>
+  </div>
+  <div class="take"><span class="lbl">So what for safety</span><p>Singapore is already strong on chip diversion. Its gaps are in vetting, site access and who owns an AI incident, which is exactly where the proto-standard turns a late, strained response into a contained one.</p></div>
+</section>
+
+<!-- 03 -->
+<section class="ch" id="c03">
+  <div class="spread">
+    <div><div class="lbl eb">Security first</div><h2><span class="n">03</span>Skip security, lose the case.</h2></div>
+    <div class="prose">
+      <p>Governments often reach for enforcement first: a high-profile prosecution, a public warning. Without the foundations underneath, those cases fall apart, and each failure teaches thieves and smugglers where the gaps are.</p>
+    </div>
+  </div>
+  <div class="fig">
+    <div class="lbl figlbl">The enforcement machine</div>
+    <p class="dek">The enforcement lever works from day one, at least on paper. Pull it before anything is built and see what happens; then lay the foundations in order and try again.</p>
+    <div class="machine">
+      <div>
+        <div class="goods" id="goods"></div>
+        <div class="lever">
+          <span class="lbl al"><svg class="bolt" viewBox="0 0 12 14" aria-hidden="true"><path d="M7 0L0 8h5l-1 6 7-8H6z" fill="currentColor"/></svg> The enforcement lever</span>
+          <h4>Prosecute the theft</h4>
+          <p>Charge the suspect, recover the weights and reassure partners. The politically obvious move.</p>
+          <button type="button" class="fire" id="lever"><svg class="bolt" viewBox="0 0 12 14" aria-hidden="true"><path d="M7 0L0 8h5l-1 6 7-8H6z" fill="currentColor"/></svg>Enforce now</button>
+        </div>
+      </div>
+      <div class="card meterc">
+        <span class="lbl">Case strength</span>
+        <div class="st"><b id="cstat2">Unbuilt</b><span id="cpct2">0%</span></div>
+        <div class="mbar"><i id="rfill"></i></div>
+        <div class="result" id="seqres" aria-live="polite">The lever is live before any of the foundations exist. Pull it and see.</div>
+        <button type="button" class="btn" id="seqreset" style="margin-top:12px">Reset</button>
+      </div>
+    </div>
+  </div>
+  <div class="fig">
+    <div class="lbl figlbl">If we skip the foundations</div>
+    <div class="chain">
+      <div><b>Cases collapse</b>No access, no suspect, no usable charge.</div>
+      <div><b>The hub looks soft</b>Thieves and smugglers learn where the gaps are.</div>
+      <div><b>Labs hold back</b>They host without conditions, or not at all.</div>
+      <div><b>Partners cut access</b>Higher tiers of frontier access go to safer hosts.</div>
+      <div><b>Leaks continue</b>Chips and weights keep flowing outside any safety regime.</div>
+    </div>
+  </div>
+  <div class="take"><span class="lbl">So what for safety</span><p>Enforcement without the foundations fails, and every failed case makes the next theft more likely. The proto-standard is the foundations.</p></div>
+</section>
+
+<!-- 04 -->
+<section class="ch" id="c04">
+  <div class="spread">
+    <div><div class="lbl eb">The fix</div><h2><span class="n">04</span>Eight things only a government can do.</h2></div>
+    <div class="prose">
+      <p>The proto-standard sits on top of lab-side standards such as RAND's security levels (<a href="https://www.rand.org/pubs/research_reports/RRA2849-1.html" target="_blank" rel="noopener">RAND</a>) and the <a href="https://sl5taskforce.substack.com/p/releasing-the-sl5-standard-v01" target="_blank" rel="noopener">SL5 Task Force standard</a>. It covers only what a host government can do: vetting people, entering sites, licensing, prosecuting and warning partners.</p>
+      <p>Below: what it covers, and how the project gets it adopted.</p>
+    </div>
+  </div>
+  <div class="fig">
+    <div class="lbl figlbl">What the proto-standard covers</div>
+    <p class="dek">Three pillars, eight requirements. Open any one to see the questions a standard would have to settle.</p>
+    <div class="troot">Host-government security proto-standard</div>
+    <div class="tcols" id="tcols"></div>
+    <div class="card tdet" id="tdet" aria-live="polite"></div>
+  </div>
+  <div class="fig">
+    <div class="lbl figlbl">Theory of change</div>
+    <p class="dek">Walk through the four pathways one at a time, or select any box to trace what it depends on and what it unlocks.</p>
+    <div class="tframe">
+      <div class="tf"><span class="lbl">The problem</span><h4>Hosts cannot yet protect the frontier AI on their soil</h4><p>No data center meets SL4-SL5; up to 1.6 million H100-equivalents smuggled through 2025; no agency clearly owns AI incidents.</p></div>
+      <div class="tf"><span class="lbl">Who it affects</span><h4>Host and transit governments first</h4><p>Security, regulatory and justice agencies; customs and financial intelligence units. Then labs, partners and the public.</p></div>
+      <div class="tf"><span class="lbl">The story</span><h4>An insider copies weights from a foreign-run site</h4><p>Today: no vetting, no access, no alert. With the standard: a report within hours and partners alerted.</p></div>
+      <div class="tf sol"><span class="lbl ac">The approach</span><h4>Endorse, then implement</h4><p>An outside advocate in the style of FATF or Transparency International. Own laws, published no-go conditions.</p></div>
+      <div class="tf sol"><span class="lbl ac">Inputs</span><h4>What goes in</h4><p>Convenings, technical security partners, AI security institutes, financial intelligence unit networks, RAND and the SL5 Task Force.</p></div>
+    </div>
+    <div class="walk">
+      <div class="cap"><div class="dashes" id="tdash"></div><div id="tcap"></div></div>
+      <div class="nav"><button type="button" class="btn" id="tprev">&larr; Back</button><button type="button" class="btn pri" id="tnext">Next &rarr;</button></div>
+    </div>
+    <div class="toc" id="toc">
+      <svg id="tocsvg" aria-hidden="true"><defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:#9EA4AA;stroke:none;opacity:1"></path></marker><marker id="ahh" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:#B4521F;stroke:none;opacity:1"></path></marker></defs><g id="tocpaths"></g></svg>
+      <div class="tg" id="tg">
+        <div class="tgh">Activities</div><div class="tgh">Outputs</div><div class="tgh">Short-term outcomes</div><div class="tacc"><span>Accountability line</span></div><div class="tgh">Long-term outcomes</div><div class="tgh">Impact</div>
+      </div>
+    </div>
+    <div class="card tocdet" id="tocdet" aria-live="polite"></div>
+    <div class="tov" id="tov" hidden>
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px"><span class="lbl">Theory of victory &middot; what winning looks like</span><button type="button" class="btn" id="tovClose">Close</button></div>
+      <div class="tg3">
+        <div><h4>The win condition</h4><ol>
+          <li>A shared, expert-endorsed host-government security proto-standard exists, and labs and partner governments refer to it when deciding where frontier models are hosted.</li>
+          <li>At least one major hub visibly meets it, and hosting there is seen as safe rather than a theft route.</li>
+          <li>AI-chip diversion through hubs is routinely detected and prosecuted under local law.</li>
+          <li>A serious AI incident triggers a report within hours and partner alerts, not misattribution between rivals.</li>
+          <li>Because middle powers can verify and enforce, future international agreements to pace or limit frontier AI become enforceable.</li></ol></div>
+        <div><h4>Why the actors converge</h4><ul>
+          <li><b>Host governments</b> want trusted access and investment.</li>
+          <li><b>Labs</b> want hosting options without theft risk.</li>
+          <li><b>Partner governments</b> want diversion stopped without running enforcement abroad.</li>
+          <li>Security becomes the price of access, so it is in everyone's interest.</li></ul></div>
+        <div><h4>Signposts</h4>
+          <p class="sig-w">Winning</p><ul><li>Labs or partner governments cite the proto-standard.</li><li>A host designates a lead agency.</li><li>A prosecution uses the new tools.</li><li>A tabletop is run jointly by 2+ countries.</li></ul>
+          <p class="sig-l">Losing</p><ul><li>Access is decided by political deals with no security conditions.</li><li>A theft is traced to a hosted site.</li><li>Standards are seen as Washington's demands rather than shared ones.</li></ul></div>
+      </div>
+    </div>
+    <div class="tbottom">
+      <div><span class="lbl">Assumptions</span><h4>What has to hold</h4><ul>
+        <li><b>Host demand:</b> at least two governments want readiness support and will share information in confidence.</li>
+        <li><b>Acceptance:</b> labs and partner governments accept host-implemented standards as meaningful.</li>
+        <li><b>Technical depth:</b> a technical security partner covers model-security controls.</li>
+        <li><b>Access politics:</b> access deals and carveouts for trusted allies continue.</li>
+        <li><b>Neutral standing:</b> hosts see the effort as an outside advocate, not Washington's enforcer.</li></ul></div>
+      <div><span class="lbl">Signposts</span><h4>How we will know</h4>
+        <div class="tms"><div><b>Month 3</b>Pilots chosen; 25+ structured conversations.<i>If not: narrow to chips.</i></div><div><b>Month 6</b>Legal gap map and red flags delivered.<i>If not: go, adjust or stop.</i></div><div><b>Month 12</b>Standard endorsed; first assessment and tabletop.<i>If not: refocus.</i></div><div><b>Month 24</b>2+ hosts acting on plans; 40-60 officials in the network.<i>Then: next phase.</i></div></div></div>
+    </div>
+  </div>
+  <div class="take"><span class="lbl">So what for safety</span><p>The proto-standard closes the leak routes at the host, and the same institutions are what any future agreement to pace or limit frontier AI would need to be enforceable.</p></div>
+</section>
+
+<!-- 05 -->
+<section class="ch" id="c05">
+  <div class="spread">
+    <div><div class="lbl eb">Feasibility</div><h2><span class="n">05</span>Everyone at the table gets something.</h2></div>
+    <div class="prose">
+      <p>No single agency can do this alone, and no actor is asked to act against its own interest. Host governments get trusted access, labs get safer places to host, partner governments get diversion stopped without running enforcement abroad.</p>
+      <p>The step up is mainly amendments, designations and training on top of laws many hubs already have.</p>
+    </div>
+  </div>
+  <div class="fig">
+    <div class="lbl figlbl">Build the coalition</div>
+    <p class="dek">Select each actor, hear their concern, and use the argument that moves them. Some will only come once others have.</p>
+    <div class="cpanel">
+      <div class="coal" id="coal"></div>
+      <div class="cside">
+        <div class="card cmeter"><span class="lbl">Coalition strength</span><div class="st"><b id="cstat">Too narrow to launch</b><span id="cpct">0%</span></div><div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="cbar"><i id="cfill"></i><s style="left:40%"></s><s style="left:75%"></s></div><p class="small">Dashed marks: 40% is enough for a pilot; 75% is a durable coalition. Actors are weighted by how much their support matters.</p><button type="button" class="btn" id="creset">Reset</button></div>
+        <div class="card adet" id="adet" aria-live="polite"></div>
+      </div>
+    </div>
+  </div>
+  <div class="notes">
+    <div><h4>Cost to the government</h4><ul>
+      <li>Amendments to existing laws: data center licensing scope, a prescribed incident type, a weights offence.</li>
+      <li>A designated lead agency for AI incidents with catastrophic potential.</li>
+      <li>Training for customs, police, prosecutors and financial intelligence analysts.</li>
+      <li>Reporting rules and a partner contact chain.</li>
+      <li>No new infrastructure.</li></ul></div>
+    <div><h4>What many hubs already have</h4><ul>
+      <li>Export-control laws covering transshipment and brokering.</li>
+      <li>Fraud and money-laundering laws that reach false end-user claims, as Singapore's 2025-2026 prosecutions show (<a href="https://www.bbc.com/news/articles/cx2d9y18g73o" target="_blank" rel="noopener">BBC</a>).</li>
+      <li>Cyber incident reporting for critical infrastructure.</li>
+      <li>Data center licensing, often new, as with Singapore's 2026 Digital Infrastructure Bill (<a href="https://www.mddi.gov.sg/newsroom/new-digital-infrastructure-bill-to-strengthen-the-foundations-for-singapore-s-digital-economy/" target="_blank" rel="noopener">MDDI</a>).</li>
+      <li>AI safety institutes and financial intelligence units.</li></ul></div>
+    <div><h4>Risks and mitigations</h4><ul>
+      <li><b>Seen as enforcing for Washington.</b> Own-law framing, host co-chairs, co-authored outputs.</li>
+      <li><b>"More hosting means more theft surface."</b> Published no-go conditions, so an assessment can say a site is not ready.</li>
+      <li><b>Technical credibility.</b> Partner with model-security experts for the technical layer.</li>
+      <li><b>Access to security services.</b> Work through AI security institutes, interior and justice ministries and financial intelligence units.</li></ul></div>
+  </div>
+  <div class="fig">
+    <div class="lbl figlbl">What the project pursues, in priority order</div>
+    <p class="dek">Foundations first, then the capacity they unlock, with delivery methods running alongside. Select any rung for detail.</p>
+    <div class="filters" role="group" aria-label="Filter by pathway" id="lf">
+      <button type="button" class="btn on" data-f="all" aria-pressed="true">All</button>
+      <button type="button" class="btn" data-f="1" aria-pressed="false">1 &middot; Proto-standards</button>
+      <button type="button" class="btn" data-f="2A" aria-pressed="false">2A &middot; Weights</button>
+      <button type="button" class="btn" data-f="2B" aria-pressed="false">2B &middot; Chips</button>
+      <button type="button" class="btn" data-f="2C" aria-pressed="false">2C &middot; Incidents</button>
+    </div>
+    <div class="ladder" id="ladder"></div>
+  </div>
+  <div class="take"><span class="lbl">Could this really happen?</span><p>Yes. Every actor gets something it already wants, whether trusted access, safer hosting or diversion stopped, and the government's cost is designations and training, not new infrastructure.</p></div>
+</section>
+
+<!-- 06 -->
+<section class="ch" id="c06">
+  <div class="spread">
+    <div><div class="lbl eb">The plan</div><h2><span class="n">06</span>What to build first, and what follows.</h2></div>
+    <div class="prose">
+      <p>A phased 24-month plan. The first useful products, a legal gap map and red flags for chips, take months, not years, and need no new law. Bigger changes follow only once governments have endorsed the standard.</p>
+    </div>
+  </div>
+  <div class="fig">
+    <div class="lbl figlbl">Twenty-four months</div>
+    <p class="dek">Three phases and four decision gates. Select any bar, deliverable or gate for detail.</p>
+    <div class="twrap"><div class="card tl" id="tl"></div></div>
+    <div class="leg"><span><i style="width:18px;height:8px;border-radius:2px;background:var(--p1)"></i>Activity, shaded by pathway</span><span><i style="width:9px;height:9px;transform:rotate(45deg);background:var(--ink)"></i>Deliverable</span><span><i style="width:0;height:12px;border-left:1.5px dashed var(--alert)"></i>Decision gate</span></div>
+    <div class="card tldet" id="tldet" aria-live="polite"><p>Select an item on the timeline.</p></div>
+  </div>
+  <div class="take"><span class="lbl">Could this really happen?</span><p>Each phase ends with something a government can use, and each gate is a point to narrow, adjust or stop before more is spent.</p></div>
+</section>
+
+<section class="ch" id="debates" style="border-bottom:0">
+  <div class="fig" style="margin-top:56px">
+    <div class="lbl figlbl">Key debates</div>
+    <p class="dek">The field broadly agrees on the problem and argues about strategy. Host-side security institutions are useful under most of the strategies on offer.</p>
+    <div class="debates">
+      <div><b>Align with Washington or hedge?</b>Some argue middle powers should align closely with the U.S. to keep access; others argue that pressure to pick a bloc makes hedging more rational.</div>
+      <div><b>Is more frontier capacity in more countries good?</b>Balance-of-power arguments say yes; others see more actors and more copies of weights as more risk.</div>
+      <div><b>Who sets security standards?</b>Some expect the U.S. to set them, with carveouts for trusted allies; others note that buyers resist conditions set by one supplier country.</div>
+      <div><b>Do export controls reduce risk?</b>Some see enforcement as part of a race; others see it as the first step of any deterrence or treaty regime; some doubt controls slow the frontier at all.</div>
+      <div><b>What are AI summits for?</b>Some want summits to deliver incident reporting and verification; others think they suit only information sharing and narrow deals.</div>
+      <div><b>Is verification near or far?</b>Verifying great-power commitments is widely seen as hard; verifying a host's domestic compliance is a lower bar that may be reachable now.</div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="band" id="about">
+  <div class="wrap">
+    <div class="g">
+      <div>
+        <span class="lbl">The concept note</span>
+        <h3>Securing Frontier AI in Middle Powers</h3>
+        <p>Our two-page concept note sets out the project's outcomes, activities and pilot candidates: convening stakeholders on best-practice security standards for frontier AI hosting, then helping host governments meet them through their own laws.</p>
+        <a class="cta2" href="Securing_Frontier_AI_Middle_Powers_2-pager.pdf" target="_blank" rel="noopener">Read the 2-pager &rarr;</a>
+        <p style="margin-top:10px">Garg and Sussman &middot; Mangrove Middle Powers hackathon, Track A, Regulation &middot; November 2026.</p>
+      </div>
+      <div>
+        <span class="lbl">About this page</span>
+        <dl>
+          <dt>A dated snapshot</dt><dd>Drawn from public sources available on 30 October 2026. Several cited cases are ongoing and will move.</dd>
+          <dt>The scenarios are hypothetical</dt><dd>The game's scenarios are invented. No real lab, operator or company is depicted as a victim or culprit.</dd>
+          <dt>How Singapore's laws were rated</dt><dd>In place: a law or institution clearly meets the requirement. Partial: something exists but does not fully cover frontier weights or AI chips. Gap: sources show nothing meets it. Unclear: we could not confirm either way. Public sources only, including law-firm summaries; not legal advice.</dd>
+          <dt>Design inspiration</dt><dd>The format of this page draws on the interactive companion to Thwing et al. (<a href="https://www.thwingetal.app/" target="_blank" rel="noopener">thwingetal.app</a>). The content and interactives are our own.</dd>
+          <dt>The interactives</dt><dd>The ship run, the game, the enforcement machine and the coalition builder run on simple, visible rules. They illustrate how the requirements interact; they are not predictions.</dd>
+        </dl>
+      </div>
+    </div>
+    <div class="srcs"><span class="lbl">Sources</span><ol class="srclist" id="srclist"></ol></div>
+    <div class="foot">The Weights Walk Out &middot; Garg and Sussman &middot; Snapshot, November 2026 &middot; For peer and judges review.</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+"use strict";
+function el(id){return document.getElementById(id);}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c];});}
+function link(s){return "<a href=\"" + s[1] + "\" target=\"_blank\" rel=\"noopener\">" + esc(s[0]) + "</a>";}
+function press(group,btn){group.querySelectorAll("button").forEach(function(b){var on=b===btn;b.classList.toggle("on",on);b.setAttribute("aria-pressed",on);});}
+var BOLT="<svg class=\"bolt\" viewBox=\"0 0 12 14\" aria-hidden=\"true\"><path d=\"M7 0L0 8h5l-1 6 7-8H6z\" fill=\"currentColor\"/></svg>";
+
+/* ---------- Sources ---------- */
+var S = {
+ epoch:["Epoch AI: Diversion and resale, estimating compute smuggling to China (2026)","https://epoch.ai/publications/chip-smuggling"],
+ kira:["KIRA Center: AI Compute in Germany (2025)","https://framerusercontent.com/assets/MaKFDMpfboIYcF3z8qPDL6wYSc.pdf"],
+ ai27:["AI 2027: Security forecast","https://ai-2027.com/supplements/security-forecast"],
+ rich:["Richardson et al.: How Sovereign Is Sovereign Compute? (2025)","https://arxiv.org/abs/2508.00932"],
+ leicht:["80,000 Hours: Anton Leicht on middle powers (2026)","https://80000hours.org/podcast/episodes/anton-leicht-middle-powers-agi-left-behind/"],
+ rand:["RAND: Securing AI Model Weights","https://www.rand.org/pubs/research_reports/RRA2849-1.html"],
+ sl5:["SL5 Task Force: SL5 standard v0.1","https://sl5taskforce.substack.com/p/releasing-the-sl5-standard-v01"],
+ doj:["U.S. Department of Justice: smuggling case involving export-controlled servers (2026)","https://www.justice.gov/opa/pr/california-man-arrested-smuggling-more-300-million-export-controlled-computer-servers-china"],
+ fdd:["FDD: Taiwan's chip smuggling case (2026)","https://www.fdd.org/analysis/taiwans-chip-smuggling-case-shows-promise-for-allied-export-control-enforcement/"],
+ cset:["CSET: Tracking AI Chips (2026)","https://cset.georgetown.edu/publication/tracking-ai-chips/"],
+ bbc:["BBC: Singapore seizes home in Nvidia chip smuggling probe (2026)","https://www.bbc.com/news/articles/cx2d9y18g73o"],
+ mm26:["Malay Mail: Singapore seizes SGD 55m bungalow in widening probe (Jul 2026)","https://www.malaymail.com/amp/news/singapore/2026/07/01/singapore-seizes-s55m-good-class-bungalow-and-s1m-in-bank-funds-in-widening-nvidia-chip-probe/225955"],
+ st25:["Straits Times via Singapore Law Watch: case began with an anonymous tip-off (Mar 2025)","https://singaporelawwatch.sg/Results/new-charges-for-3-men-allegedly-linked-to-servers-that-likely-contained-nvidia-chips"],
+ sgca:["Singapore Customs: Strategic Goods Control overview","https://www.customs.gov.sg/permits-and-licences/trade-controls-and-prohibitions/strategic-goods-control/strategic-goods-control-overview/"],
+ mti:["MTI and Singapore Customs: Joint advisory on advanced semiconductor and AI export controls (Apr 2025)","https://www.mti.gov.sg/-/media/MTI/Newsroom/Press-Releases/2025/04/MTICustoms-Joint-Advisory-Export-Controls-on-Advanced-Semiconductor-and-Artificial-Intelligence-AI-T.pdf"],
+ rs:["Reed Smith: final-destination declarations and the February 2025 joint raids (Apr 2025)","https://www.tradecomplianceresourcehub.com/2025/04/24/singapore-targets-businesses-and-individuals-violating-or-circumventing-other-countries-export-controls-on-advanced-semiconductor-and-ai-technologies/"],
+ mddi:["MDDI: New Digital Infrastructure Bill (Sep 2026)","https://www.mddi.gov.sg/newsroom/new-digital-infrastructure-bill-to-strengthen-the-foundations-for-singapore-s-digital-economy/"],
+ fin:["Fintech News Singapore: Digital Infrastructure Bill passed on 7 October 2026","https://fintechnews.sg/?p=138783"],
+ pm:["People Matters: IMDA as main reporting channel for data center incidents (Oct 2026)","https://sea.peoplemattersglobal.com/news/economy-policy/singapore-passes-digital-infrastructure-bill-with-fines-of-up-to-dollar1m-for-big-data-centres-52594"],
+ csa:["CSA: incident notification forms and timelines (2-hour rule)","https://www.csa.gov.sg/legislation/forms/"],
+ hl:["Hogan Lovells: Cybersecurity (Amendment) Act provisions in force (Oct 2025)","https://www.hlc.com/en/publications/provisions-in-singapores-cybersecurity-amendment-act-came-into-force-on-31-october-2025"],
+ bm:["Baker McKenzie: using the Computer Misuse Act against data theft (2025)","https://www.bakermckenzie.com/en/insight/publications/alerts/2025/08/singapore-using-computer-misuse-act-against-data-theft"],
+ aip:["Asia IP: the Zhang Changjie case and the Computer Misuse Act (2025)","https://asiaiplaw.com/article/analyzing-the-zhang-changjie-case-a-new-use-for-the-computer-misuse-act"],
+ rt:["Rajah and Tann: CII Cybersecurity Code of Practice 2026","https://www.rajahtannasia.com/viewpoints/updates-on-cybersecurity-code-of-practice-for-critical-information-infrastructure-and-cloud-services/"],
+ ch:["Chambers: Singapore cybersecurity guide, CII access-log duties (2025)","https://gpg-pdf.chambers.com/view/902006512/232/"],
+ aisi:["Singapore AI Safety Institute","https://www.sgaisi.sg"],
+ imda:["IMDA: Digital Trust Centre designated as Singapore's AI Safety Institute (2024)","https://imda.gov.sg/resources/press-releases-factsheets-and-speeches/factsheets/2024/digital-trust-centre"],
+ csaai:["Baker McKenzie: CSA advisory on frontier AI model risks (Apr 2026)","https://www.bakermckenzie.com/en/insight/publications/2026/04/singapore-csa-advisory-on-risks-associated-with-frontier-ai-models"],
+ fatf:["FATF and APG: Mutual Evaluation of Singapore (2026)","https://www.fatf-gafi.org/en/publications/Mutualevaluations/mer-singapore-2026.html"],
+ alert:["Report on the proposed U.S.-China AI incident notification mechanism (Sep 2026)","https://andrew.ooo/answers/what-is-us-china-ai-dialogue-incident-notification-mechanism-september-2026/"],
+ bk:["Berkman Klein Center: the case for cross-border AI incident infrastructure (2026)","https://cyber.harvard.edu/story/2026-05/case-cross-border-ai-incident-infrastructure"],
+ carn:["Carnegie: AI Breakout Capacity (2026)","https://carnegieendowment.org/research/2026/09/artificial-intelligence-ai-development-breakout-germany-india-japan-uk-middle-power"],
+ tfs:["The Future Society: What compute on European soil might buy Europe (2026)","https://thefuturesociety.org/european-ai-compute/"],
+ newam:["New America: Middle powers and the shape of AI governance (2026)","https://www.newamerica.org/insights/middle-powers-and-the-shape-of-ai-governance-three-experts-weigh-in/"],
+ ctrl:["Amadori et al.: How middle powers may prevent the development of artificial superintelligence (2025)","https://www.lesswrong.com/posts/rwdtMRmhC9sP9MF5n/how-middle-powers-may-prevent-the-development-of-artificial"]
+};
+
+/* ---------- Requirements ---------- */
+var REQ = [
+ {n:1,p:"w",name:"Personnel vetting",req:"Staff with access to model weights pass government-recognized background checks.",prev:"An insider recruited by a foreign state.",basis:"RAND SL3+ insider-threat controls",
+  subs:[["Who is covered","Anyone with access to frontier weights or key algorithms, including outside vendors and remote administrators."],["Depth of check","What the check examines and which agency runs or accredits it."],["Re-vetting","Periodic re-checks and continuous evaluation, not a one-time screen."],["Safeguards","Privacy, appeal and non-discrimination protections for people being vetted."]]},
+ {n:2,p:"w",name:"Insider-threat program",req:"Operators run monitoring and reporting, with government oversight.",prev:"Copying that goes unnoticed.",basis:"RAND; counterintelligence practice",
+  subs:[["Two-person rules","No single person can copy or move weights alone."],["Egress monitoring","Alerts on unusual outbound transfers from weight storage."],["Reporting to the regulator","Summary results shared with a government overseer."],["Protection for reporters","Staff can raise concerns without retaliation."]]},
+ {n:3,p:"w",name:"Inspection authority",req:"The government can audit the security of any site hosting frontier weights, including foreign-run sites.",prev:"\"We have no access to that site.\"",basis:"Critical-infrastructure licensing regimes",
+  subs:[["Coverage","Every site hosting frontier weights, including facilities a lab runs for its own use."],["Audit types","Scheduled audits and short-notice inspections after an alert."],["Evidence powers","Power to preserve logs and systems before they are wiped."],["Confidentiality","Findings protected so labs can be candid."]]},
+ {n:4,p:"w",name:"Security-conditioned licensing",req:"The hosting licence is tied to the security level of the model hosted.",prev:"Frontier models in under-secured sites.",basis:"RAND security levels; SL5 Task Force standard",
+  subs:[["Licence tiers","A frontier-hosting tier mapped to RAND security levels."],["No-go conditions","Published criteria under which a site must not host frontier weights."],["Ownership and customer screening","Checks on who owns the site and who rents its compute."],["Change of control","Conditions that apply when a site is sold or its operator changes."]]},
+ {n:5,p:"w",name:"Laws cover weights and algorithms",req:"Theft of model weights or proprietary algorithms is clearly an offence.",prev:"Prosecutors without a usable charge.",basis:"The Taiwan forgery-law workaround",
+  subs:[["A clear offence","Copying weights or algorithms without authority is a named crime."],["Insiders with partial access","Covers staff who had some legitimate access but exceeded it."],["Fitting penalties","Penalties that match the harm, not a minor computer-access fine."],["Jurisdiction","Reaches foreign-run sites and foreign nationals on the host's soil."]]},
+ {n:6,p:"c",name:"Chip-diversion enforcement",req:"Customs, export-control and financial-intelligence tools for AI chips, including transshipment.",prev:"Chips leaving through front companies.",basis:"Epoch estimate; DOJ cases; hub prosecutions",
+  subs:[["End-user checks","Verified end users for high-value AI-server sales."],["Financial red flags","AI-chip typologies for banks and the financial intelligence unit."],["Customs targeting","Risk targeting for AI servers, including false destinations and mislabeling."],["Compute-provider checks","Know-your-customer rules for renting out AI compute remotely."],["Lead response","A protocol so a tip or location ping becomes an inspection or case."]]},
+ {n:7,p:"i",name:"Incident reporting",req:"Operators notify a designated agency within hours.",prev:"Learning about a theft late or from the press.",basis:"Cyber-incident reporting rules; EU AI Act",
+  subs:[["Incident types","Weight theft, serious misuse and dangerous capabilities are reportable."],["Within hours","An initial report within hours, with detail to follow."],["Who must report","Every site hosting frontier weights, not only critical infrastructure."],["Follow-up","Written and final reports so lessons are captured."]]},
+ {n:8,p:"i",name:"Lead agency and partner alerts",req:"One agency owns AI incidents and has a channel to partners.",prev:"Confusion, misattribution, partners cutting access.",basis:"Proposed U.S.-China alert mechanism (Sep 2026)",
+  subs:[["One owner","A designated lead agency for AI incidents with catastrophic potential."],["Contact chain","A tested chain to partner governments and the lab's home government."],["Plugs into channels","Built to connect with emerging alert channels, not rival them."],["Joint exercises","Tabletops run with partners so the chain works under pressure."]]}
+];
+
+/* ---------- 01 Matrix ---------- */
+function mtx(id,title,stages){
+  var h="<div class=\"ttl\">" + esc(title) + "</div>";
+  stages.forEach(function(s){h+="<div class=\"stage" + (s.g==="gap"?" gapc":"") + "\">" + esc(s.s) + "</div>";});
+  h+="<div class=\"rh\">Who covers it today</div>";
+  stages.forEach(function(s){h+="<div" + (s.g==="gap"?" class=\"gapc\"":"") + ">" + esc(s.who) + "</div>";});
+  h+="<div class=\"rh\">Host-government gap?</div>";
+  stages.forEach(function(s){var t=s.g==="gap"?"<span class=\"tag al\">Gap</span>":s.g==="part"?"<span class=\"tag\">Partly covered</span>":"<span class=\"tag ok\">Covered elsewhere</span>";h+="<div" + (s.g==="gap"?" class=\"gapc\"":"") + ">" + t + "</div>";});
+  h+="<div class=\"rh\">Proto-standard fix</div>";
+  stages.forEach(function(s){h+="<div class=\"fixc" + (s.g==="gap"?" gapc":"") + "\">" + esc(s.fix) + "</div>";});
+  el(id).innerHTML=h;
+}
+mtx("mtxChips","AI chips",[
+ {s:"Made and exported",who:"Exporting-country licensing; chipmakers; proposed location checks",g:"ok",fix:"Out of scope: a home-country control"},
+ {s:"Transit and resale",who:"Customs and financial intelligence units, rarely equipped for AI chips",g:"gap",fix:"Req 6: red flags and end-user checks; Req 5: usable offences"},
+ {s:"Installed in a host data center",who:"Operators; host licensing often weak over foreign-run sites",g:"gap",fix:"Reqs 3, 4: inspection and licensing"},
+ {s:"Rented out remotely",who:"Cloud know-your-customer proposals; research",g:"part",fix:"Req 6: checks for compute providers"}
+]);
+mtx("mtxW","Model weights",[
+ {s:"Trained at a lab",who:"Lab security teams; RAND security levels; SL5 Task Force standard",g:"ok",fix:"Lab-side standards already apply"},
+ {s:"Hosted abroad",who:"No government-side standard exists",g:"gap",fix:"Reqs 1-5: vetting, monitoring, inspection, licensing, law"},
+ {s:"Served to users",who:"Labs; access deals between labs and governments",g:"part",fix:"Req 4: licence conditions on access"},
+ {s:"Stolen or misused",who:"A proposed U.S.-China alert channel; host roles unclear",g:"gap",fix:"Reqs 7, 8: report, attribute, alert"}
+]);
+
+/* ---------- 01 Ships ---------- */
+var SHIPSVG="<svg viewBox=\"0 0 26 16\" aria-hidden=\"true\"><rect x=\"7\" y=\"5\" width=\"4\" height=\"4\" rx=\".5\" fill=\"currentColor\" opacity=\".55\"/><rect x=\"11.5\" y=\"5\" width=\"4\" height=\"4\" rx=\".5\" fill=\"currentColor\" opacity=\".75\"/><rect x=\"11.5\" y=\"1.2\" width=\"4\" height=\"3.4\" rx=\".5\" fill=\"currentColor\" opacity=\".45\"/><rect x=\"17\" y=\"2.5\" width=\"3\" height=\"6.5\" rx=\".6\" fill=\"currentColor\"/><path d=\"M1 9.3h24l-3.6 5.4H4.4z\" fill=\"currentColor\"/></svg>";
+var CP = ["Exporter","Hub buyer","Bank payment","Hub customs","Onward transit","End use"];
+var CPS = ["Exp","Buy","Bank","Cust","Trans","Use"];
+var MEAS = [
+ {k:1,t:"End-user checks for AI-server sales",r:"Req 6"},
+ {k:2,t:"AI-chip red flags for banks and the financial intelligence unit",r:"Req 6"},
+ {k:3,t:"Customs risk targeting for AI servers",r:"Req 6"},
+ {k:4,t:"Cross-border lead sharing with neighbors",r:"Req 8"},
+ {k:5,t:"End-use checks: lead response and compute-provider checks",r:"Req 6"}
+];
+var SHIP = [
+ {t:"False end-user papers",k:[1,2],base:5},
+ {t:"Shell company with no real data center",k:[1,4]},
+ {t:"Payment routed through third-country accounts",k:[2,4]},
+ {t:"Payments split under reporting thresholds",k:[2,3]},
+ {t:"Servers declared as generic IT equipment",k:[3,5]},
+ {t:"False final destination on the declaration",k:[3,4],base:3},
+ {t:"Re-exported from a neighboring country",k:[4]},
+ {t:"Relabeled in a free-trade zone and reshipped",k:[3,4]},
+ {t:"Installed in the hub, then rented remotely to a blocked user",k:[5]},
+ {t:"Insider at a legitimate buyer quietly resells",k:[]}
+];
+var mOn=[false,false,false,false,false];
+function pos(i){return (4+i*(92/5))+"%";}
+function stopAt(s){var stops=[];s.k.forEach(function(k){if(mOn[k-1])stops.push(k);});if(s.base)stops.push(s.base);return stops.length?Math.min.apply(null,stops):-1;}
+function renderMeas(){el("meas").innerHTML=MEAS.map(function(m,i){return "<button type=\"button\" class=\"mt\" data-i=\""+i+"\" aria-pressed=\""+mOn[i]+"\"><span class=\"sw\" aria-hidden=\"true\"></span><span><b>"+esc(m.t)+"</b><i>Checkpoint: "+CP[m.k]+" &middot; "+m.r+"</i></span></button>";}).join("");}
+var runTimers=[];
+function renderLanes(mode){ /* mode: "idle" | "run" | "static" */
+  runTimers.forEach(clearTimeout);runTimers=[];
+  var h="<div class=\"lhead\"><div class=\"lbl\" style=\"font-size:9.5px\">Ship &middot; scheme</div><div class=\"cps\">"+CP.map(function(c,i){return "<span class=\"cp\" style=\"left:"+pos(i)+"\"><span class=\"cpl\">"+c+"</span><span class=\"cpsh\">"+CPS[i]+"</span></span>";}).join("")+"</div></div>";
+  var c={pre:0,tr:0,late:0,thru:0};
+  SHIP.forEach(function(s,i){
+    var k=stopAt(s), cls, lbl, end, col;
+    if(k<0){cls="thru";lbl="Got through";end="calc(100% - 13px)";c.thru++;col="#8a2f12";}
+    else if(k===5){cls="late";lbl="Caught after delivery";end=pos(5);c.late++;col="var(--alert)";}
+    else {cls="stop";lbl=k===4?"Stopped in transit":"Stopped in the hub";end=pos(k);if(k===4)c.tr++;else c.pre++;col="var(--accent)";}
+    var lp=k<0?"calc(100% - 112px)":k>=4?"calc("+end+" - "+(k===5?150:122)+"px)":"calc("+end+" + 18px)";
+    var start=mode==="static"?end:"0%";
+    h+="<div class=\"lane\"><div class=\"nm\"><b>"+(i+1)+"</b>"+esc(s.t)+"</div><div class=\"track\"><span class=\"hubz\" style=\"left:calc("+pos(1)+" - 12px);width:calc("+pos(3)+" - "+pos(1)+" + 24px)\"></span>"+
+     CP.map(function(x,j){return "<span class=\"tk"+(s.k.indexOf(j)>=0?" tr8":"")+"\" style=\"left:"+pos(j)+"\"></span>";}).join("")+
+     "<span class=\"ship"+(mode==="idle"?"":" "+cls)+"\" data-end=\""+end+"\" style=\"left:"+start+"\">"+SHIPSVG+(cls!=="thru"&&mode!=="idle"?"<span class=\"x\" style=\"color:"+col+"\">&#10005;</span>":"")+"</span>"+
+     (mode==="idle"?"":"<span class=\"res"+(mode==="static"?" show":"")+"\" style=\"left:"+lp+";color:"+col+"\">"+lbl+"</span>")+"</div></div>";
+  });
+  el("lanes").innerHTML=h;
+  if(mode==="idle"){el("tallies").innerHTML="<div class=\"tal\"><b>10</b><span>Ships waiting to sail</span></div><div class=\"tal\"><b>6</b><span>Checkpoints on the route</span></div><div class=\"tal\"><b>3</b><span>Of them inside the hub</span></div><div class=\"tal\"><b>5</b><span>Measures the proto-standard adds</span></div>";return;}
+  el("tallies").innerHTML="<div class=\"tal a\"><b>"+c.pre+"</b><span>Stopped in the hub, before export</span></div><div class=\"tal a\"><b>"+c.tr+"</b><span>Stopped in transit</span></div><div class=\"tal w\"><b>"+c.late+"</b><span>Caught after delivery, too late</span></div><div class=\"tal g\"><b>"+c.thru+"</b><span>Got through</span></div>";
+  if(mode==="run"){
+    var ships=el("lanes").querySelectorAll(".ship"), res=el("lanes").querySelectorAll(".res");
+    ships.forEach(function(sh,i){runTimers.push(setTimeout(function(){sh.style.left=sh.getAttribute("data-end");},80+i*90));runTimers.push(setTimeout(function(){if(res[i])res[i].classList.add("show");},1350+i*90));});
+  }
+}
+el("meas").addEventListener("click",function(e){var b=e.target.closest(".mt");if(!b)return;var i=+b.getAttribute("data-i");mOn[i]=!mOn[i];renderMeas();renderLanes("static");el("meas").querySelector("[data-i=\""+i+"\"]").focus();});
+el("simToday").addEventListener("click",function(){mOn=[false,false,false,false,false];renderMeas();renderLanes("run");});
+el("simAll").addEventListener("click",function(){mOn=[true,true,true,true,true];renderMeas();renderLanes("run");});
+el("simRun").addEventListener("click",function(){renderLanes("run");});
+
+/* step-through for ships */
+var SSTEPS=[
+ {l:"Step 01 · The route",h:"Ten ships, ten schemes.",p:"Each ship carries AI servers under a different scheme drawn from public cases. Most schemes leave traces at more than one checkpoint, shown as rings, so measures can back each other up. The shaded band is the hub: the buyer, the bank and customs.",m:null},
+ {l:"Step 02 · Today",h:"Eight of ten get through.",p:"With today's tools, a false destination is caught at customs, and one ship is caught after delivery, months later, thanks to a tip-off, which is how the real cases surfaced. Epoch assumes only about a quarter of diversion is ever detected; here, two of ten are.",m:[0,0,0,0,0]},
+ {l:"Step 03 · Check the buyer and the money",h:"Five stopped before export.",p:"End-user checks catch the front companies, and AI-chip red flags at the bank catch the payment tricks. All of this happens inside the hub, before a single server leaves.",m:[1,1,0,0,0]},
+ {l:"Step 04 · Customs and neighbors",h:"Eight stopped before delivery.",p:"Customs risk targeting catches mislabeled and relabeled servers before they leave, and lead sharing with neighbors stops a re-export in transit.",m:[1,1,1,1,0]},
+ {l:"Step 05 · Acting on leads",h:"One still gets through.",p:"End-use checks catch the remote-rental scheme, though only after the servers are installed. An insider at a legitimate buyer still slips past. No standard is perfect, but most of the leak is closed, and closed early.",m:[1,1,1,1,1]}
+];
+var sStep=-1;
+function setShipStep(i,force){
+  if(i===sStep&&!force)return;sStep=i;var st=SSTEPS[i];
+  el("sdash").innerHTML=SSTEPS.map(function(x,j){return "<button type=\"button\" data-s=\""+j+"\" class=\""+(j===i?"on":j<i?"done":"")+"\" aria-label=\"Step "+(j+1)+"\"></button>";}).join("")+"<span class=\"lbl\">"+(i<SSTEPS.length-1?"Keep scrolling &darr;":"Now you try &darr;")+"</span>";
+  el("mstep").innerHTML="<span class=\"lbl al\">"+esc(st.l)+"</span><h4>"+esc(st.h)+"</h4><p>"+esc(st.p)+"</p><div style=\"display:flex;gap:6px;margin-top:10px\"><button type=\"button\" class=\"btn\" id=\"msPrev\""+(i===0?" disabled":"")+">&larr; Back</button><button type=\"button\" class=\"btn pri\" id=\"msNext\""+(i===SSTEPS.length-1?" disabled":"")+">Next step &rarr;</button></div>";
+  document.querySelectorAll("#steps .step").forEach(function(s,j){s.classList.toggle("on",j===i);});
+  if(st.m===null){mOn=[false,false,false,false,false];renderMeas();renderLanes("idle");}
+  else {mOn=st.m.map(function(v){return !!v;});renderMeas();renderLanes("run");}
+}
+el("steps").innerHTML=SSTEPS.map(function(s,j){return "<div class=\"step\" data-s=\""+j+"\"><span class=\"lbl al\">"+esc(s.l)+"</span><h4>"+esc(s.h)+"</h4><p>"+esc(s.p)+"</p></div>";}).join("");
+el("sdash").addEventListener("click",function(e){var b=e.target.closest("button[data-s]");if(!b)return;var j=+b.getAttribute("data-s");if(window.innerWidth>980){var t=el("steps").querySelector(".step[data-s=\""+j+"\"]");t.scrollIntoView({block:"center",behavior:"smooth"});}setShipStep(j,true);});
+el("mstep").addEventListener("click",function(e){if(e.target.closest("#msPrev"))setShipStep(Math.max(0,sStep-1));if(e.target.closest("#msNext"))setShipStep(Math.min(SSTEPS.length-1,sStep+1));});
+if("IntersectionObserver" in window){
+  var io=new IntersectionObserver(function(ents){if(window.innerWidth<=980)return;ents.forEach(function(en){if(en.isIntersecting)setShipStep(+en.target.getAttribute("data-s"));});},{rootMargin:"-45% 0px -45% 0px"});
+  document.querySelectorAll("#steps .step").forEach(function(s){io.observe(s);});
+}
+
+function placeTry(){var t=el("tryit"), wide=window.innerWidth>980;
+  if(wide&&t.parentNode!==el("steps"))el("steps").appendChild(t);
+  if(!wide&&t.parentNode===el("steps"))el("scrolly").parentNode.insertBefore(t,el("scrolly").nextSibling);}
+placeTry();window.addEventListener("resize",placeTry);
+
+/* ---------- 02 Game ---------- */
+var LAWS = [
+ {r:"un",today:"No public regime for government-recognized vetting of private data center staff. The cyber code of practice sets technical access controls, not personnel checks.",src:["rt"]},
+ {r:"pa",today:"Critical infrastructure owners must log and review access; new data center licensees must run security risk management. Neither targets insider copying of weights.",src:["ch","mddi"]},
+ {r:"pa",today:"The Digital Infrastructure Bill (passed 7 Oct 2026) licenses co-location and cloud sites of 10 MW or more. Sites used only for the operator's own purposes are excluded.",src:["mddi","fin"]},
+ {r:"ga",today:"Licence conditions cover resilience, incident reporting and energy efficiency, and can enforce capacity commitments. Nothing ties the licence to the model's security level.",src:["mddi"]},
+ {r:"pa",today:"The Computer Misuse Act covers unauthorized access to data and has been used against an employee who copied files (maximum fine of SGD 5,000 imposed). No dedicated trade-secret offence.",src:["bm","aip"]},
+ {r:"in",today:"Strategic goods controls, an April 2025 AI-chip advisory, final-destination declarations, and fraud and money-laundering charges with a SGD 55 million house seized.",src:["sgca","mti","rs","mm26","fatf"]},
+ {r:"pa",today:"Critical infrastructure owners must notify the cyber agency within 2 hours; data center licensees report specified incidents to IMDA. Weight theft at other sites may not trigger a report.",src:["csa","hl","pm"]},
+ {r:"un",today:"The cyber agency leads on cyber incidents and the AI Safety Institute does research and testing. No public designation of an AI-incident lead agency or partner alert channel.",src:["aisi","imda","csaai"]}
+];
+var RT = {in:["In place","r-in"],pa:["Partial","r-pa"],ga:["Gap","r-ga"],un:["Unclear","r-un"]};
+var LVN = ["Missing","Partial","Full"];
+function todayLv(){return LAWS.map(function(l){return l.r==="in"?2:l.r==="pa"?1:0;});}
+var gProf="today", lv=todayLv(), gScen="A", gStep=0, picks=[];
+var SCEN = {
+ A:{title:"Weight theft",sub:"A frontier model's weights leave a hosted site",
+  scene:"2 a.m. A foreign-operated data center in Singapore hosts a frontier model. Its monitoring shows a large outbound transfer from the server room that stores the model's weights.",
+  d:[
+   {q:"Who finds out, and how fast?",c:[
+     {t:"The operator's insider-threat rule flags it at once, and the weight-theft reporting rule puts it in your lead agency's hands within 2 hours.",need:[[1,2],[6,2]],s:3,o:"Report filed at T+2h. Your lead agency opens a case before dawn."},
+     {t:"Ask the cyber agency to pull a report under existing incident rules.",need:[[6,1]],s:2,o:"The site is not clearly covered for this incident type. The operator answers informally about 12 hours later."},
+     {t:"Wait for the operator to come forward.",need:[],s:0,o:"You hear about it 36 hours later, from the operator's lawyers."}]},
+   {q:"You need the logs and server rooms preserved before evidence disappears.",c:[
+     {t:"Send inspectors in under the site's frontier-hosting licence; vetting records narrow suspects to the few staff cleared for weight access.",need:[[2,2],[0,2]],s:3,o:"Logs preserved the same day; three cleared staff are interviewed."},
+     {t:"Request logs under general data center licence powers.",need:[[2,1]],s:2,o:"The licence covers resilience, not security audits, and own-use sites fall outside. The overseas parent negotiates access; a day is lost."},
+     {t:"Rely on the operator's internal investigation.",need:[],s:0,o:"The operator's report arrives a week later. Key logs have rotated out."}]},
+   {q:"You need a charge, and the lab's home government is asking what happened.",c:[
+     {t:"Charge under a clear model-weights offence, and your lead agency briefs the lab's home government within hours.",need:[[4,2],[7,2]],s:3,o:"A strong charge, and partners hear it from you first."},
+     {t:"Charge unauthorized access under the Computer Misuse Act, and brief partners through informal contacts.",need:[[4,1]],s:2,o:"The suspect argues they had authorized access, and penalties are low. Partners piece the story together."},
+     {t:"Say nothing publicly until the investigation ends.",need:[],s:0,o:"Partners learn from the press and pause higher-tier access."}]}],
+  end:{good:["Contained, access kept","The theft was spotted within hours, the site was entered, a strong charge was available and partners heard it from you first. Trusted access continues."],
+       mid:["Contained late, access strained","You acted, but late or without every tool. Partners keep working with Singapore, with new conditions and less trust."],
+       bad:["Weights gone, access cut","The weights left before anyone with authority knew, and partners learned from the press. Higher-tier access is suspended pending review."]}},
+ B:{title:"Chip diversion",sub:"AI servers move through the hub toward a blocked buyer",
+  scene:"A small local distributor has ordered far more AI servers than its business could use. Payments for them arrive from accounts in a third country, and the company has declared exports to a neighboring country.",
+  d:[
+   {q:"A bank notices the unusual payments. What happens next?",c:[
+     {t:"Your financial intelligence unit applies AI-chip red flags, links the payments to the export declarations, and opens a case before shipment.",need:[[5,2]],s:3,o:"The pattern matches a known diversion typology. Investigators move in before the servers ship."},
+     {t:"The report works its way through general proliferation red flags.",need:[[5,1]],s:2,o:"Flagged, but slowly. The first batch ships while analysts check."},
+     {t:"Treat it as a commercial matter for the bank.",need:[],s:0,o:"No case is opened."}]},
+   {q:"The servers are due to leave port in 48 hours.",c:[
+     {t:"Hold the shipment: AI servers are flagged for customs risk targeting, and false end-user claims are an offence you can charge.",need:[[5,2],[4,1]],s:3,o:"Shipment held. Fraud and money-laundering charges follow, as in past hub cases."},
+     {t:"Let it go and investigate the paperwork afterward.",need:[],s:1,o:"The servers leave. You may recover proceeds later, but the chips are gone."},
+     {t:"Ask the chip's home country to act.",need:[],s:0,o:"Their enforcement reach stops at your border."}]},
+   {q:"Half the order already left last week for a neighboring country.",c:[
+     {t:"Pass the lead to the neighbor through a standing cross-border channel; they intercept before delivery.",need:[[7,2]],s:3,o:"The neighbor's customs stop the shipment at the warehouse."},
+     {t:"Send a formal mutual legal assistance request.",need:[],s:1,o:"It takes months. The servers are installed and rented out by then."},
+     {t:"Close the case with the shipments you stopped.",need:[],s:0,o:"Half the chips reach a blocked buyer."}]}],
+  end:{good:["Diversion stopped, hub trusted","You stopped the servers in Singapore and helped a neighbor stop the rest. Singapore's reputation as a trusted trade hub grows."],
+       mid:["Partly stopped, chips got through","Strong tools at home stopped what was still in port, but there was no fast way to stop what had already left."],
+       bad:["Chips gone, hub under suspicion","The servers reached a blocked buyer, and partners start asking whether Singapore can be trusted with controlled chips."]}},
+ C:{title:"AI incident",sub:"A hosted model is used in a cyberattack on a neighbor",
+  scene:"A model hosted in a Singapore data center is used to run an autonomous cyberattack on a neighboring country's power grid. The neighbor's officials say the attack traffic came from Singapore.",
+  d:[
+   {q:"Who in your government owns this?",c:[
+     {t:"Your designated lead agency for AI incidents takes charge within the hour and convenes the cyber agency and the regulator.",need:[[7,2]],s:3,o:"One owner, one timeline, one voice."},
+     {t:"The cyber agency leads under its national incident framework; AI-specific questions go unanswered.",need:[[6,1]],s:2,o:"The cyber response is fast, but no one is sure who decides about the hosted model."},
+     {t:"Three agencies each wait for the others.",need:[],s:0,o:"Hours pass with no owner."}]},
+   {q:"You need to know whether the hosted model was really the source.",c:[
+     {t:"The operator reports within 2 hours under the AI incident rule and hands over logs.",need:[[6,2]],s:3,o:"Logs confirm misuse through a compromised customer account within hours."},
+     {t:"Request logs under the data center licence; they arrive the next day.",need:[[2,1]],s:2,o:"You confirm the source a day later."},
+     {t:"Ask the model's developer abroad to investigate.",need:[],s:1,o:"Helpful, but slow, and on their timeline, not yours."}]},
+   {q:"The neighbor is preparing a public statement blaming Singapore.",c:[
+     {t:"Alert the neighbor and the developer's home government through a tested channel, with your evidence, before the statement.",need:[[7,2]],s:3,o:"The neighbor's statement credits Singapore's cooperation."},
+     {t:"Call counterparts through informal contacts.",need:[],s:1,o:"Partly reassuring. The statement goes out anyway, with hedges."},
+     {t:"Issue a denial.",need:[],s:0,o:"The dispute escalates, and partners question Singapore's controls."}]}],
+  end:{good:["Contained, no misattribution","One agency led, the source was confirmed in hours and partners heard it from you first. Relations hold."],
+       mid:["Contained late, relations strained","The attack was contained, but slow attribution and informal alerts left the neighbor unconvinced."],
+       bad:["Blamed, access cut","Singapore was blamed in public before it could respond, and partners restrict access to frontier models hosted there."]}}
+};
+function lockReasons(c){return c.need.filter(function(n){return lv[n[0]]<n[1];}).map(function(n){return "Req "+REQ[n[0]].n+" "+REQ[n[0]].name+" ("+LVN[n[1]]+")";});}
+function usesText(c){return c.need.length?"Uses "+c.need.map(function(n){return "Req "+REQ[n[0]].n+" "+REQ[n[0]].name;}).join("; "):"Uses no special powers";}
+function renderLaws(){
+  var edit=gProf==="custom";
+  el("profNote").textContent=gProf==="today"?"Singapore's laws as rated from public sources, October 2026.":gProf==="std"?"Every requirement at Full: the proto-standard adopted.":"Set each law yourself.";
+  el("laws").innerHTML=REQ.map(function(q,i){
+    return "<div class=\"law\"><div class=\"top\"><span class=\"nm\"><i>"+q.n+"</i>"+esc(q.name)+"</span><span class=\"lvl\" role=\"group\" aria-label=\""+esc(q.name)+" level\">"+[0,1,2].map(function(v){return "<button type=\"button\" data-l=\""+i+"\" data-v=\""+v+"\" aria-pressed=\""+(lv[i]===v)+"\""+(edit?"":" disabled")+">"+LVN[v]+"</button>";}).join("")+"</span></div>"+
+      "<details><summary>Singapore today: "+RT[LAWS[i].r][0]+"</summary><div class=\"ev\"><span class=\"rt "+RT[LAWS[i].r][1]+"\">"+RT[LAWS[i].r][0]+"</span> "+esc(LAWS[i].today)+"<div class=\"src\" style=\"margin-top:4px\">"+LAWS[i].src.map(function(k){return link(S[k]);}).join("; ")+"</div></div></details></div>";
+  }).join("");
+  document.querySelectorAll("#c02 .prof .btn").forEach(function(b){var on=b.getAttribute("data-p")===gProf;b.classList.toggle("on",on);b.setAttribute("aria-pressed",on);});
+}
+el("laws").addEventListener("click",function(e){var b=e.target.closest("button[data-l]");if(!b||b.disabled)return;lv[+b.getAttribute("data-l")]=+b.getAttribute("data-v");renderLaws();restart();});
+document.querySelectorAll("#c02 .prof .btn").forEach(function(b){b.addEventListener("click",function(){gProf=b.getAttribute("data-p");if(gProf==="today")lv=todayLv();else if(gProf==="std")lv=[2,2,2,2,2,2,2,2];renderLaws();restart();});});
+function renderTabs(){el("stabs").innerHTML=["A","B","C"].map(function(k){return "<button type=\"button\" class=\"stab\" data-s=\""+k+"\" aria-pressed=\""+(k===gScen)+"\"><b>"+esc(SCEN[k].title)+"</b><span>"+esc(SCEN[k].sub)+"</span></button>";}).join("");}
+el("stabs").addEventListener("click",function(e){var b=e.target.closest(".stab");if(!b)return;gScen=b.getAttribute("data-s");renderTabs();restart();});
+function restart(){gStep=0;picks=[];renderPlay();}
+function renderPlay(){
+  var sc=SCEN[gScen], h="<p class=\"scene\"><span class=\"hyp\">Hypothetical</span>"+esc(sc.scene)+"</p>";
+  h+="<div class=\"gdash\" aria-label=\"Decision "+Math.min(gStep+1,3)+" of 3\">"+[0,1,2].map(function(i){return "<i class=\""+(i<picks.length?"done":i===gStep?"cur":"")+"\"></i>";}).join("")+"<span class=\"lbl\" style=\"margin-left:8px\">"+(gStep<3?"Decision "+(gStep+1)+" of 3":"The ending")+"</span></div>";
+  var score=picks.reduce(function(a,p,i){return a+sc.d[i].c[p].s;},0);
+  if(gStep<3){
+    var d=sc.d[gStep], answered=picks.length>gStep;
+    h+="<div class=\"prompt\">"+esc(d.q)+"</div><div class=\"choices\">";
+    d.c.forEach(function(c,i){var lk=lockReasons(c), dis=lk.length>0||answered;
+      h+="<button type=\"button\" class=\"choice"+(answered&&picks[gStep]===i?" picked":"")+"\" data-c=\""+i+"\""+(dis?" disabled":"")+">"+esc(c.t)+(lk.length?"<span class=\"lock\">Locked &middot; needs "+esc(lk.join("; "))+"</span>":"<span class=\"uses\">"+esc(usesText(c))+"</span>")+"</button>";});
+    h+="</div>";
+    if(answered){var pc=d.c[picks[gStep]];h+="<p class=\"outc\">"+esc(pc.o)+"</p><div style=\"margin-top:12px\"><button type=\"button\" class=\"btn pri\" id=\"gNext\">"+(gStep<2?"Next decision &rarr;":"See the ending &rarr;")+"</button></div>";}
+  } else {
+    var tier=score>=8?"good":score>=5?"mid":"bad", e=sc.end[tier], missing=[];
+    sc.d.forEach(function(d,i){var chosen=d.c[picks[i]];d.c.forEach(function(c){if(c.s>chosen.s){c.need.forEach(function(n){if(lv[n[0]]<n[1]){var t="Req "+REQ[n[0]].n+" "+REQ[n[0]].name;if(missing.indexOf(t)<0)missing.push(t);}});}});});
+    h+="<div class=\"ending "+tier+"\"><span class=\"hyp\">Hypothetical ending</span><h4>"+esc(e[0])+"</h4><p>"+esc(e[1])+"</p>"+
+      (missing.length?"<span class=\"lbl\">What would have changed this</span><ul>"+missing.map(function(m){return "<li>"+esc(m)+"</li>";}).join("")+"</ul>":(tier==="good"?"":"<p class=\"small\">Better moves were open to you; try again.</p>"))+
+      "<div style=\"display:flex;gap:8px;flex-wrap:wrap;margin-top:10px\"><button type=\"button\" class=\"btn pri\" id=\"gStd\">Replay with the proto-standard</button><button type=\"button\" class=\"btn\" id=\"gAgain\">Replay this scenario</button></div></div>";
+  }
+  h+="<div class=\"scorebar\"><span>Response score</span><span class=\"bar\"><i style=\"width:"+(score/9*100)+"%\"></i></span><span>"+score+" / 9</span></div>";
+  el("play").innerHTML=h;
+}
+el("play").addEventListener("click",function(e){
+  var c=e.target.closest(".choice");
+  if(c&&!c.disabled){picks[gStep]=+c.getAttribute("data-c");renderPlay();var n=el("gNext");if(n)n.focus();return;}
+  if(e.target.closest("#gNext")){gStep++;renderPlay();var f=el("play").querySelector(".choice:not([disabled])");if(f)f.focus();return;}
+  if(e.target.closest("#gStd")){gProf="std";lv=[2,2,2,2,2,2,2,2];renderLaws();restart();return;}
+  if(e.target.closest("#gAgain")){restart();}
+});
+
+/* ---------- 03 Machine ---------- */
+var BLK = [
+ ["Law","Law covering weights","No usable charge: prosecutors fall back on a weak computer-access count, and the case stalls."],
+ ["Ownership","Lead agency","Confusion: three agencies, no owner. Partners hear about it from the news."],
+ ["Warning","Incident reporting","Too late: the theft surfaces days later, after the evidence has gone cold."],
+ ["Access","Inspection authority","Case collapses: no legal access to the site."],
+ ["People","Personnel vetting","Suspect unknown: no records to narrow who had access to the weights."]
+];
+var built=0;
+function renderSeq(){
+  el("goods").innerHTML=BLK.map(function(b,i){var st=i<built?"built":i===built?"next":"";
+    return "<button type=\"button\" class=\"good "+st+"\" data-i=\""+i+"\""+(i>built?" disabled":"")+" aria-pressed=\""+(i<built)+"\"><span class=\"gn\">0"+(i+1)+"</span><span><span class=\"gl\">"+b[0]+"</span><span class=\"gt\">"+esc(b[1])+"</span></span><span class=\"tag"+(i<built?" ok":i===built?" al":"")+"\">"+(i<built?"Built":i===built?"Build next":"Locked")+"</span></button>";}).join("");
+  var pct=built===0?6:built*20, word=built===0?"Unbuilt":built<5?"Partly built":"Ready";
+  el("rfill").style.width=pct+"%";el("rfill").style.background=built===5?"var(--accent)":"var(--p2b)";
+  el("cpct2").textContent=(built*20)+"%";el("cstat2").textContent=word;
+}
+el("goods").addEventListener("click",function(e){var b=e.target.closest(".good");if(!b||b.disabled)return;if(+b.getAttribute("data-i")===built){built++;renderSeq();var nx=el("goods").querySelector("[data-i=\""+Math.min(built,4)+"\"]");if(nx)nx.focus();}});
+el("lever").addEventListener("click",function(){var r=el("seqres");
+  if(built<5){r.className="result fail";r.innerHTML="<b>The case collapses.</b>Missing: "+esc(BLK[built][1])+". "+esc(BLK[built][2])+" <span class=\"small\" style=\"display:block;margin-top:6px\">"+(5-built)+" foundation"+(5-built===1?"":"s")+" still missing.</span>";}
+  else{r.className="result win";r.innerHTML="<b>The case holds.</b>The theft is reported within hours, inspectors preserve the logs, vetting records narrow the suspects, a clear charge applies, and the lead agency alerts partners. Access continues.";}
+});
+el("seqreset").addEventListener("click",function(){built=0;renderSeq();el("seqres").className="result";el("seqres").textContent="The lever is live before any of the foundations exist. Pull it and see.";});
+
+/* ---------- 04a Tree ---------- */
+var PIL = [["w","Securing weights and algorithms","Requirements 1-5"],["c","Stopping chip diversion","Requirement 6, with 5"],["i","Responding to incidents","Requirements 7-8"]];
+var tSel=0, tSub=0;
+function renderTree(){
+  el("tcols").innerHTML=PIL.map(function(p){return "<div class=\"tpil\"><div class=\"tph\"><b>"+esc(p[1])+"</b><span>"+p[2]+"</span></div><div class=\"treq\">"+REQ.map(function(q,i){return q.p===p[0]?"<button type=\"button\" class=\"tr\" data-i=\""+i+"\" aria-pressed=\""+(i===tSel)+"\"><i>"+q.n+"</i>"+esc(q.name)+"</button>":"";}).join("")+(p[0]==="c"?"<div class=\"small\" style=\"padding:2px 4px\">Also uses Req 5 for usable offences</div>":"")+"</div></div>";}).join("");
+  var q=REQ[tSel];
+  el("tdet").innerHTML="<span class=\"lbl al\">Requirement "+q.n+"</span><h4>"+esc(q.name)+"</h4><p class=\"rq\">"+esc(q.req)+"</p>"+
+   "<div class=\"subs\" role=\"group\" aria-label=\"Sub-topics\">"+q.subs.map(function(s,i){return "<button type=\"button\" class=\"sub\" data-s=\""+i+"\" aria-pressed=\""+(i===tSub)+"\">"+esc(s[0])+"</button>";}).join("")+"</div>"+
+   "<p class=\"subx\">"+esc(q.subs[tSub][1])+"</p>"+
+   "<div class=\"kv2\"><span class=\"k\">Prevents</span><span>"+esc(q.prev)+"</span><span class=\"k\">Basis</span><span>"+esc(q.basis)+"</span></div>";
+}
+el("tcols").addEventListener("click",function(e){var b=e.target.closest(".tr");if(!b)return;tSel=+b.getAttribute("data-i");tSub=0;renderTree();el("tcols").querySelector("[data-i=\""+tSel+"\"]").focus();});
+el("tdet").addEventListener("click",function(e){var b=e.target.closest(".sub");if(!b)return;tSub=+b.getAttribute("data-s");renderTree();el("tdet").querySelector("[data-s=\""+tSub+"\"]").focus();});
+
+/* ---------- 04b Theory of change ---------- */
+var PWN={p1:"Pathway 1 · Proto-standards",p2a:"Pathway 2A · Model weights",p2b:"Pathway 2B · Chip diversion",p2c:"Pathway 2C · Incidents"};
+var COLS=["act","out","st","lt"], COLX={act:1,out:2,st:3,lt:5};
+var TN = {
+ p1:[["Convene and endorse","Dialogues, roundtables and tabletops on weights, chips and incidents, with RAND as the baseline for weights."],["Endorsed proto-standard and network","An endorsed proto-standard, a gap report to RAND and the SL5 Task Force, and 40-60 officials in a network."],["A shared baseline","Labs, partner governments and pilot hosts agree on what host governments must have in place."],["Security becomes the price of trusted access","Standards fit how hosting works in middle powers, and access follows security."]],
+ p2a:[["Readiness assessments, then implementation","Help with vetting, insider-threat programs, inspection powers, licensing and legal authority over foreign-run sites."],["Assessments and action plans","Readiness assessments and action plans in 2 countries; model regulations and procedures."],["Hosts adopt the basics","A vetting pathway, insider-threat program or inspection procedures in at least one host."],["Hosted models protected at accepted levels","Hosting abroad stops being an easy route to model theft."]],
+ p2b:[["Chip-smuggling enforcement support","Domestic law and regulation, investigative and prosecutorial capacity, cooperation across borders, red-flag guidance."],["Legal gap map and red flags","Legal gap map for 5-6 jurisdictions; red-flag guidance; training for police, prosecutors, customs and financial intelligence units."],["Prosecutors and analysts can act","Guidance adopted by a financial intelligence unit network; legal or regulatory fixes under way in one host."],["Fewer chips reach actors outside any safety regime","Diversion is detected and prosecuted under local law."]],
+ p2c:[["Incident protocols","Model protocols for AI incidents posing catastrophic risk, built to plug into emerging channels such as the proposed U.S.-China alert."],["Protocol and tabletops","A model protocol annex; national and joint tabletop exercises."],["A designated agency can act","A contact chain tested and working across 2+ countries."],["Incidents contained faster","Rapid warnings, and misattribution between rivals is avoided."]]
+};
+var EDGES=[];
+["p1","p2a","p2b","p2c"].forEach(function(p){for(var i=0;i<3;i++)EDGES.push([p+"-"+COLS[i],p+"-"+COLS[i+1],0]);EDGES.push([p+"-lt","imp",0]);});
+EDGES.push(["p1-out","p2a-act",1],["p1-out","p2b-act",1],["p1-out","p2c-act",1],["p1-lt","p2a-st",1]);
+var NODE={};
+(function buildToc(){
+  var h="";
+  ["p1","p2a","p2b","p2c"].forEach(function(p,r){COLS.forEach(function(c,ci){var id=p+"-"+c, t=TN[p][ci];NODE[id]={p:p,t:t[0],d:t[1]};
+    h+="<button type=\"button\" class=\"tn "+p+" "+c+"\" data-id=\""+id+"\" style=\"grid-column:"+COLX[c]+";grid-row:"+(r+2)+"\">"+(ci===0?"<em>"+PWN[p]+"</em>":"")+esc(t[0])+"</button>";});});
+  NODE.imp={p:"all",t:"Reduced catastrophic risk from the theft and misuse of frontier AI",d:"Fewer actors outside any safety regime hold frontier capabilities, and middle powers can help enforce whatever agreements the world reaches to pace or limit frontier AI."};
+  h+="<div class=\"tn imp\" data-id=\"imp\"><span class=\"lbl\" style=\"color:#E7955F\">Impact</span><b>"+esc(NODE.imp.t)+"</b><span class=\"tx\">"+esc(NODE.imp.d)+"</span><button type=\"button\" class=\"btn\" id=\"tovOpen\">What winning looks like &rarr;</button></div>";
+  el("tg").insertAdjacentHTML("beforeend",h);
+})();
+function anc(id,acc){EDGES.forEach(function(e){if(e[1]===id&&acc.indexOf(e[0])<0){acc.push(e[0]);anc(e[0],acc);}});return acc;}
+function desc(id,acc){EDGES.forEach(function(e){if(e[0]===id&&acc.indexOf(e[1])<0){acc.push(e[1]);desc(e[1],acc);}});return acc;}
+var tocSel=null, tocPw="all";
+var TSTEPS=[
+ {pw:"all",l:"Step 01 · The whole map",h:"Four pathways, one impact.",p:"Pathway 1 builds the shared standard. Pathways 2A, 2B and 2C help host governments meet it for weights, chips and incidents. The dashed line marks where the project's direct control ends."},
+ {pw:"p1",l:"Step 02 · Pathway 1",h:"Agree the standard first.",p:"Convenings produce an endorsed proto-standard and a network of officials. The dashed teal links show it feeding every other pathway."},
+ {pw:"p2a",l:"Step 03 · Pathway 2A",h:"Then secure the weights.",p:"Readiness assessments become action plans, and hosts adopt vetting, monitoring and inspection, so hosting stops being a route to theft."},
+ {pw:"p2b",l:"Step 04 · Pathway 2B",h:"Close the chip routes.",p:"A legal gap map and red flags let prosecutors and analysts act, so diversion is caught under local law."},
+ {pw:"p2c",l:"Step 05 · Pathway 2C",h:"Be ready for the bad day.",p:"Model protocols and joint tabletops give one agency the job of warning partners fast, which prevents misattribution between rivals."},
+ {pw:"imp",l:"Step 06 · The impact",h:"Everything points to one outcome.",p:"Less frontier capability in the hands of actors outside any safety regime. Open the win condition to see what success looks like."}
+];
+var tStep=0;
+function setTocStep(i){
+  tStep=i;tocSel=null;tocPw=TSTEPS[i].pw;var st=TSTEPS[i];
+  el("tdash").innerHTML=TSTEPS.map(function(x,j){return "<button type=\"button\" data-s=\""+j+"\" class=\""+(j===i?"on":j<i?"done":"")+"\" aria-label=\"Step "+(j+1)+"\"></button>";}).join("")+"<span class=\"lbl\">Walk through</span>";
+  el("tcap").innerHTML="<span class=\"lbl al\">"+esc(st.l)+"</span><h4>"+esc(st.h)+"</h4><p>"+esc(st.p)+"</p>";
+  el("tprev").disabled=i===0;el("tnext").disabled=i===TSTEPS.length-1;
+  applyToc();
+}
+el("tdash").addEventListener("click",function(e){var b=e.target.closest("button[data-s]");if(b)setTocStep(+b.getAttribute("data-s"));});
+el("tprev").addEventListener("click",function(){setTocStep(Math.max(0,tStep-1));});
+el("tnext").addEventListener("click",function(){setTocStep(Math.min(TSTEPS.length-1,tStep+1));});
+function drawEdges(){
+  var box=el("toc").getBoundingClientRect(), g=el("tocpaths"), h="";
+  if(window.innerWidth<=820){g.innerHTML="";return;}
+  EDGES.forEach(function(e,i){
+    var a=el("tg").querySelector("[data-id=\""+e[0]+"\"]"), b=el("tg").querySelector("[data-id=\""+e[1]+"\"]");if(!a||!b)return;
+    var ra=a.getBoundingClientRect(), rb=b.getBoundingClientRect(), d;
+    var x1=ra.right-box.left, y1=ra.top+ra.height/2-box.top, x2=rb.left-box.left-2, y2=e[1]==="imp"?Math.max(rb.top-box.top+20,Math.min(rb.bottom-box.top-20,y1)):rb.top+rb.height/2-box.top;
+    if(e[2]){x1=ra.left-box.left;y1=ra.top+ra.height*0.72-box.top;var tx=rb.right-box.left+2, ty=rb.top+rb.height*0.25-box.top, gx=Math.max(tx+9,x1-9);if(gx>x1-4)gx=x1-6;d="M"+x1+","+y1+" H"+gx+" V"+ty+" H"+tx;}
+    else {var mx=(x1+x2)/2;d="M"+x1+","+y1+" C"+mx+","+y1+" "+mx+","+y2+" "+x2+","+y2;}
+    h+="<path data-e=\""+i+"\" class=\""+(e[2]?"x":"")+"\" d=\""+d+"\" marker-end=\"url(#ah)\"></path>";
+  });
+  g.innerHTML=h;applyToc();
+}
+function applyToc(){
+  var t=el("toc"), on=[];
+  if(tocSel){on=[tocSel].concat(anc(tocSel,[]),desc(tocSel,[]));}
+  else if(tocPw==="imp"){on=["imp","p1-lt","p2a-lt","p2b-lt","p2c-lt"];}
+  else if(tocPw!=="all"){Object.keys(NODE).forEach(function(k){if(NODE[k].p===tocPw)on.push(k);});}
+  t.classList.toggle("focus",on.length>0);t.classList.toggle("impf",tocPw==="imp"&&!tocSel);
+  t.querySelectorAll(".tn").forEach(function(n){var id=n.getAttribute("data-id");n.classList.toggle("hl",on.indexOf(id)>=0);n.classList.toggle("sel",id===tocSel);});
+  t.querySelectorAll("path[data-e]").forEach(function(p){var e=EDGES[+p.getAttribute("data-e")];var hl=on.indexOf(e[0])>=0&&on.indexOf(e[1])>=0&&(tocSel||tocPw==="imp"?true:NODE[e[0]].p===tocPw);p.classList.toggle("hl",hl);p.setAttribute("marker-end",hl?"url(#ahh)":"url(#ah)");});
+  var d=el("tocdet");
+  if(!tocSel){d.innerHTML="<p class=\"small\" style=\"margin:0\">Select any box to see what it depends on and what it leads to. The dashed teal arrows show Pathway 1's endorsed standard and shared baseline feeding the other pathways.</p>";return;}
+  var nm=function(id){return esc(NODE[id].t);};
+  var up=EDGES.filter(function(e){return e[1]===tocSel;}).map(function(e){return nm(e[0]);}), dn=EDGES.filter(function(e){return e[0]===tocSel;}).map(function(e){return nm(e[1]);});
+  d.innerHTML="<span class=\"lbl\">"+(NODE[tocSel].p==="all"?"Impact":PWN[NODE[tocSel].p])+"</span><h4>"+nm(tocSel)+"</h4><p style=\"font-size:16px;color:var(--ink2);margin:2px 0 6px\">"+esc(NODE[tocSel].d)+"</p><div class=\"kv2\"><span class=\"k\">Depends on</span><span>"+(up.length?up.join("; "):"Inputs and convenings")+"</span><span class=\"k\">Leads to</span><span>"+(dn.length?dn.join("; "):"The win condition (see theory of victory)")+"</span></div>";
+}
+el("tg").addEventListener("click",function(e){
+  if(e.target.closest("#tovOpen")){var tv=el("tov");tv.hidden=false;tv.scrollIntoView({block:"nearest"});el("tovClose").focus();return;}
+  var n=e.target.closest(".tn");if(!n)return;var id=n.getAttribute("data-id");if(id==="imp")return;tocSel=tocSel===id?null:id;applyToc();
+});
+el("tovClose").addEventListener("click",function(){el("tov").hidden=true;el("tovOpen").focus();});
+
+/* ---------- 05 Coalition ---------- */
+var ZONES=[["imp","Implementers","Must act: the agencies that write and enforce the rules"],["gate","Gatekeepers","Must accept: those whose trust makes the standard count"],["chal","Challengers","Must not block: critics whose concerns need an answer"]];
+var ACT=[
+ {id:"dig",z:"imp",w:3,n:"Digital ministry and data center regulator",gain:"Hosting that labs trust, and a stronger case to be an AI hub.",ask:"Add a frontier-hosting licence tier that also covers sites run for an operator's own use; issue a security code.",obj:"New data center rules are recent, and industry wants a light touch.",how:"Pilot the tier as voluntary first, recognize existing certifications, and show that labs will choose certified sites.",pre:[]},
+ {id:"cyb",z:"imp",w:2,n:"Cyber security agency",gain:"Earlier warning of attacks on hosted models.",ask:"Make suspected weight theft a reportable incident within hours.",obj:"Already stretched by wider cyber threats.",how:"Fit the new incident type into existing reporting forms and timelines rather than building a new system.",pre:[]},
+ {id:"trd",z:"imp",w:2,n:"Trade ministry and customs",gain:"Protects the country's standing as a trusted trade hub.",ask:"Risk targeting for AI servers, and acting on location leads.",obj:"Fear of slowing legitimate trade.",how:"Target only high-value AI-server shipments, and use own-law fraud framing, as some hubs already do.",pre:[]},
+ {id:"law",z:"imp",w:2,n:"Police, prosecutors and financial intelligence unit",gain:"Better leads for fraud and money-laundering cases they already bring.",ask:"Adopt AI-chip typologies and train investigators.",obj:"AI chips look like a niche among many priorities.",how:"Show that diversion cases double as fraud and money-laundering wins, with assets to recover.",pre:[]},
+ {id:"std",z:"gate",w:1,n:"Standard developers (RAND, SL5 Task Force)",gain:"A government-side layer that makes their standards usable abroad.",ask:"Review the proto-standard and map it to security levels.",obj:"Limited bandwidth for new work.",how:"Bring them a ready-made gap report that feeds their next version.",pre:[]},
+ {id:"ops",z:"gate",w:2,n:"Data center operators",gain:"Clear rules, and a frontier-ready tier they can market.",ask:"Vetting, insider-threat monitoring and inspection access.",obj:"Cost and compliance burden.",how:"Make the tier a selling point to labs, and phase requirements in with transition time.",pre:["dig"]},
+ {id:"lab",z:"gate",w:3,n:"Frontier labs",gain:"More places they can host safely, with less of their own diligence.",ask:"Accept host inspection and incident reporting.",obj:"They resist mandatory disclosure.",how:"Map every requirement to security levels they already use, and keep audit findings confidential.",pre:["std"]},
+ {id:"prt",z:"gate",w:3,n:"Partner governments",gain:"Diversion stopped without running enforcement abroad.",ask:"Recognize host-implemented standards and join an alert channel.",obj:"May fear a lower bar, or sharing alerts with rivals.",how:"Show the standard meets or exceeds their own conditions, and plug alerts into channels they already use.",pre:["trd"]},
+ {id:"saf",z:"chal",w:1,n:"Pause-leaning safety community",gain:"Fewer actors outside any safety regime.",ask:"Do not oppose; ideally endorse.",obj:"More hosting means more theft surface, and enforcement can sound like race framing.",how:"Publish no-go conditions so the standard can say a site is not ready, and stay neutral on buildout.",pre:[]},
+ {id:"sov",z:"chal",w:1,n:"Sovereignty advocates",gain:"Rules written and enforced at home.",ask:"Accept a shared standard.",obj:"Standards look as if they were set in Washington.",how:"Use host co-chairs, co-authored outputs and enforcement under each country's own laws.",pre:["dig"]},
+ {id:"civ",z:"chal",w:1,n:"Civil liberties groups",gain:"Safeguards written in from the start.",ask:"Accept vetting and inspection powers.",obj:"Vetting and enforcement could expand surveillance.",how:"Write privacy, appeal and remedy safeguards into the standard, and limit it to catastrophic-risk sites.",pre:[]},
+ {id:"ind",z:"chal",w:1,n:"Chip and server industry",gain:"Fewer diverted products putting their export licences at risk.",ask:"Support end-user checks.",obj:"Compliance burden; tends to downplay diversion.",how:"Limit checks to high-value AI orders, and show that diversion threatens their own licences.",pre:["trd"]},
+ {id:"hwk",z:"chal",w:1,n:"National security hawks abroad",gain:"Allies that enforce controls themselves.",ask:"Accept hosting in middle powers that meet the standard.",obj:"Wary of hosting abroad, or of a lower bar.",how:"Show diversion falls when hubs enforce, and present the standard as a floor, not a ceiling.",pre:["prt"]}
+];
+var won={}, aSel=null, TOT=ACT.reduce(function(a,x){return a+x.w;},0);
+function aName(id){for(var i=0;i<ACT.length;i++)if(ACT[i].id===id)return ACT[i].n;return id;}
+function renderCoal(){
+  el("coal").innerHTML=ZONES.map(function(z){return "<div class=\"zone\"><h4>"+z[1]+"</h4><div class=\"zs\">"+z[2]+"</div>"+ACT.filter(function(a){return a.z===z[0];}).map(function(a){return "<button type=\"button\" class=\"actor"+(won[a.id]?" won":"")+"\" data-a=\""+a.id+"\" aria-pressed=\""+(aSel===a.id)+"\"><span>"+esc(a.n)+"</span><span class=\"st\">"+(won[a.id]?"On board":"Not yet")+"</span></button>";}).join("")+"</div>";}).join("");
+  var got=ACT.reduce(function(a,x){return a+(won[x.id]?x.w:0);},0), pct=Math.round(got/TOT*100);
+  el("cfill").style.width=pct+"%";el("cbar").setAttribute("aria-valuenow",pct);el("cpct").textContent=pct+"%";
+  el("cstat").textContent=pct>=75?"Durable coalition":pct>=40?"Pilot possible":"Too narrow to launch";
+  if(!aSel){el("adet").innerHTML="<span class=\"lbl\">How to win them</span><p class=\"small\" style=\"margin:8px 0 0\">Select an actor to see what they gain, what worries them and the argument that moves them.</p>";return;}
+  var a=ACT.filter(function(x){return x.id===aSel;})[0], miss=a.pre.filter(function(p){return !won[p];});
+  el("adet").innerHTML="<span class=\"lbl al\">"+ZONES.filter(function(z){return z[0]===a.z;})[0][1]+"</span><h4>"+esc(a.n)+"</h4><div class=\"kv2\"><span class=\"k\">What they gain</span><span>"+esc(a.gain)+"</span><span class=\"k\">What we ask</span><span>"+esc(a.ask)+"</span><span class=\"k\">Their concern</span><span>"+esc(a.obj)+"</span><span class=\"k\">How to win them</span><span style=\"font-family:var(--serif);font-style:italic;font-size:16.5px;color:var(--ink)\">"+esc(a.how)+"</span></div><div style=\"margin-top:12px\">"+
+   (won[a.id]?"<span class=\"tag ok\">On board</span>":(miss.length?"<button type=\"button\" class=\"btn\" disabled>Use this argument</button><p class=\"small\" style=\"margin:6px 0 0\">First win over: "+esc(miss.map(aName).join(", "))+"</p>":"<button type=\"button\" class=\"btn pri\" id=\"winA\">Use this argument</button>"))+"</div>";
+}
+el("coal").addEventListener("click",function(e){var b=e.target.closest(".actor");if(!b)return;aSel=b.getAttribute("data-a");renderCoal();el("coal").querySelector("[data-a=\""+aSel+"\"]").focus();});
+el("adet").addEventListener("click",function(e){if(e.target.closest("#winA")){won[aSel]=true;renderCoal();}});
+el("creset").addEventListener("click",function(){won={};aSel=null;renderCoal();});
+
+/* ---------- 05 Ladder ---------- */
+var LAD=[
+ ["Foundations · first six months",[
+  ["1","Endorsed host security proto-standard","Core","Stakeholders endorse what host governments must have in place, with RAND as the baseline.","Lab-side standards exist (RAND, SL5 Task Force); none covers host governments."],
+  ["1","Published no-go conditions","Core","Criteria under which a country should not host frontier weights.","None found."],
+  ["2A","Authority map for foreign-operated data centers","Core","What licensing, inspection and emergency powers each host holds over foreign-run sites, answered for 5 countries.","Ownership is mapped (Richardson et al.); legal authority is not."],
+  ["2B","Legal gap map of offences","Core","Which charges prosecutors can already use against diversion, and what is missing, for 5-6 jurisdictions.","Case studies exist; no comparative map."]]],
+ ["Capacity · months 6 to 24",[
+  ["2B","AI-chip red flags and a practitioners' network","Core","Customs, financial intelligence unit and export-control officials sharing typologies across borders.","General financial intelligence networks exist; nothing AI-chip specific found."],
+  ["2A","Customer due diligence for compute providers","Core","Know-your-customer and remote-access controls that keep a host trusted to receive chips.","Proposals exist for U.S. cloud providers; not adapted for host governments."],
+  ["2B","Diversion enforcement as a condition of access","Core","Link access to demonstrated host enforcement against diversion.","Research is U.S.-focused; host-side capacity has no owner."],
+  ["2C","Cross-border AI incident notification pilot","Core","Who receives, attributes and notifies, tested between 2-3 governments.","A proposed U.S.-China alert channel; the host-country layer is open."],
+  ["2A","Investment screening for AI-relevant assets","Add-on","Model screening rules for data center and chip-equipment acquisitions.","General investment-screening regimes exist; not AI-specific."]]],
+ ["Delivery methods · throughout",[
+  ["all","Crisis tabletop series","Method","Weight-theft, chip-diversion and AI-incident scenarios with senior officials in 2-3 capitals.","Strategy games exist; few are host-focused and enforcement-focused."],
+  ["all","Recurring national roundtables","Method","Closed-door meetings of ministries, AI security institutes, labs and academics in pilot capitals.","Regional AI safety groups convene; few on security and enforcement."],
+  ["all","Ministerial red-team briefings","Method","Short scenario briefings for interior, justice, finance and defense ministries.","Briefings usually reach digital ministries only."],
+  ["2C","Summit preparation","Method","An incident protocol annex for the 2027 Swiss AI summit.","Summit hosts and their advisers."]]]
+];
+var ladF="all";
+function renderLadder(){
+  var n=0, h="";
+  LAD.forEach(function(t){h+="<div class=\"tier\">"+esc(t[0])+"</div>";t[1].forEach(function(r){n++;var pc=r[0]==="all"?"pcall":"pc"+r[0].toLowerCase(), dim=ladF!=="all"&&r[0]!==ladF&&r[0]!=="all";
+    h+="<button type=\"button\" class=\"rung"+(dim?" dim":"")+"\" aria-expanded=\"false\"><span class=\"rk\">"+(n<10?"0":"")+n+"</span><span class=\"rt1\"><b>"+esc(r[1])+"</b><span class=\"pchip "+pc+"\">"+(r[0]==="all"?"All pathways":"Pathway "+r[0])+"</span><span class=\"kind\">"+esc(r[2])+"</span></span><span class=\"rx\">"+esc(r[3])+"<br><span class=\"small\">Who else is active: "+esc(r[4])+"</span></span></button>";});});
+  el("ladder").innerHTML=h;
+}
+el("ladder").addEventListener("click",function(e){var b=e.target.closest(".rung");if(!b)return;b.setAttribute("aria-expanded",b.getAttribute("aria-expanded")!=="true");});
+el("lf").addEventListener("click",function(e){var b=e.target.closest(".btn");if(!b)return;press(el("lf"),b);ladF=b.getAttribute("data-f");renderLadder();});
+
+/* ---------- 06 Timeline ---------- */
+var TLL=[
+ {k:"p1",n:"1 · Proto-standards",bars:[[0,6,"Convene and draft","Closed-door dialogues and roundtables with labs, officials and researchers; draft the proto-standard on RAND's baseline."],[6,12,"Endorse v1","Endorse proto-standard v1 through the convenings."],[12,24,"Periodic updates","Update as technology, threats and practice evolve; feed gaps back to standard developers."]],dia:[[12,"Proto-standard v1 endorsed; gap report to RAND and the SL5 Task Force."]]},
+ {k:"p2a",n:"2A · Model weights",bars:[[2,6,"Authority map","Map licensing, inspection and emergency powers over foreign-run sites."],[6,12,"First readiness assessment","Assess one host against the proto-standard and agree an action plan it owns."],[12,24,"Host action plans","Help hosts adopt vetting, insider-threat programs and inspection procedures."]],dia:[[12,"First readiness assessment and action plan."],[24,"2+ hosts acting on their plans."]]},
+ {k:"p2b",n:"2B · Chip diversion",bars:[[0,4,"Legal gap map","Which offences prosecutors can already use, for 5-6 jurisdictions."],[2,6,"Red-flag guidance","AI-chip red flags for banks, financial intelligence units and freight forwarders.",1],[6,24,"Practitioners' network and training","Train customs, police, prosecutors and analysts; share typologies across borders."]],dia:[[4,"Legal gap map delivered."],[6,"Red-flag guidance delivered.",1],[24,"Guidance adopted by a financial intelligence unit network."]]},
+ {k:"p2c",n:"2C · Incidents",bars:[[4,12,"Draft model protocol","Who receives, attributes and reports AI incidents posing catastrophic risk."],[12,24,"Cross-border pilot","Test the contact chain between 2+ countries, plugged into emerging channels."]],dia:[[12,"First national incident tabletop."],[24,"Protocol tested across 2+ countries."]]},
+ {k:"all",n:"Methods",bars:[[0,24,"Dialogues, roundtables, briefings and tabletops","The delivery methods that run through every pathway in pilot countries."]],dia:[]}
+];
+var GATES=[[3,"Month 3 gate","Pilot countries chosen; 25+ structured conversations with labs, AI security institutes and financial intelligence units. If not: narrow to chip-smuggling enforcement."],[6,"Month 6 gate","Legal gap map and red flags delivered; one host requests a readiness assessment. If not: go, adjust or stop."],[12,"Month 12 gate","Proto-standard endorsed; first readiness assessment and incident tabletop done. If not: refocus."],[24,"Month 24","2+ hosts acting on plans; 40-60 officials in the network; incident protocol tested across 2+ countries. Then: decide the next phase."]];
+var PHS=[[0,6,"Phase 1 · Convene and draft"],[6,12,"Phase 2 · Endorse and assess"],[12,24,"Phase 3 · Implement and connect"]];
+var TLI={};
+function pc(m){return (m/24*100).toFixed(3)+"%";}
+function renderTL(){
+  var gl=GATES.map(function(g){return "<span class=\"gate\" style=\"left:"+pc(g[0])+"\"></span>";}).join(""), h="", idx=0;
+  h+="<div class=\"tlr tlph\"><div class=\"tll lbl\" style=\"font-size:10px\">Phases</div><div class=\"tlt\">"+PHS.map(function(p){return "<span class=\"ph\" style=\"left:"+pc(p[0])+";width:calc("+pc(p[1]-p[0])+" - 6px)\">"+esc(p[2])+"</span>";}).join("")+"</div></div>";
+  h+="<div class=\"tlr tlax\"><div class=\"tll lbl\" style=\"font-size:10px\">Month</div><div class=\"tlt\">"+[0,3,6,9,12,15,18,21,24].map(function(m){return "<span style=\"left:"+pc(m)+"\">"+m+"</span>";}).join("")+"</div></div>";
+  h+="<div class=\"tlr\"><div class=\"tll lbl\" style=\"font-size:10px\">Decision gates</div><div class=\"tlt\">"+gl+GATES.map(function(g,i){var id="g"+i;TLI[id]=[g[1],g[2]];return "<button type=\"button\" class=\"gbtn\" data-t=\""+id+"\" style=\"left:"+pc(g[0])+";top:10px\">M"+g[0]+"</button>";}).join("")+"</div></div>";
+  TLL.forEach(function(l){var col=l.k==="all"?"#8C939A":"var(--"+l.k+")", rows=1;
+    l.bars.forEach(function(b){if(b[4])rows=Math.max(rows,b[4]+1);});
+    h+="<div class=\"tlr\"><div class=\"tll\">"+esc(l.n)+"</div><div class=\"tlt\" style=\"height:"+(40+(rows-1)*26)+"px\">"+gl+
+     l.bars.map(function(b){var id="b"+(idx++);TLI[id]=[b[2]+" · months "+b[0]+"-"+b[1],b[3]];return "<button type=\"button\" class=\"bar2\" data-t=\""+id+"\" style=\"left:"+pc(b[0])+";width:calc("+pc(b[1]-b[0])+" - 3px);top:"+(9+(b[4]||0)*26)+"px;background:"+col+"\">"+esc(b[2])+"</button>";}).join("")+
+     l.dia.map(function(d){var id="d"+(idx++);TLI[id]=["Deliverable · month "+d[0],d[1]];return "<button type=\"button\" class=\"dia\" data-t=\""+id+"\" aria-label=\"Deliverable month "+d[0]+"\" style=\"left:"+pc(d[0])+";top:"+(13+(d[2]||0)*26)+"px\"></button>";}).join("")+"</div></div>";});
+  el("tl").innerHTML=h;
+}
+el("tl").addEventListener("click",function(e){var b=e.target.closest("[data-t]");if(!b)return;el("tl").querySelectorAll(".sel").forEach(function(x){x.classList.remove("sel");});b.classList.add("sel");var t=TLI[b.getAttribute("data-t")];el("tldet").innerHTML="<h4>"+esc(t[0])+"</h4><p>"+esc(t[1])+"</p>";});
+
+/* ---------- Sources and navigation ---------- */
+el("srclist").innerHTML=Object.keys(S).map(function(k){return "<li>"+link(S[k])+"</li>";}).join("");
+var secs=["c00","c01","c02","c03","c04","c05","c06","about"].map(el), railA=document.querySelectorAll("#rail a"), topA=document.querySelectorAll("#tnav a"), lastCur=-1;
+function onScroll(){
+  var h=document.documentElement, sc=h.scrollTop||document.body.scrollTop, max=h.scrollHeight-h.clientHeight, f=max>0?sc/max:0;
+  el("prog").style.width=(f*100)+"%";
+  var cur=-1;secs.forEach(function(s,i){if(s.getBoundingClientRect().top<160)cur=i;});
+  if(max-sc<4)cur=secs.length-1;
+  railA.forEach(function(a,i){a.classList.toggle("on",i===cur);a.classList.toggle("done",i<cur);});
+  topA.forEach(function(a,i){a.classList.toggle("on",i===cur);});
+  var ol=el("rail"), target=cur>=0?railA[cur].getBoundingClientRect():railA[0].getBoundingClientRect(), top=ol.getBoundingClientRect().top;
+  el("rfillr").style.height=Math.max(0,(target.top+5)-(top+6))+"px";
+  if(cur>=0&&cur!==lastCur){lastCur=cur;var a=topA[cur],box=el("tnav");box.scrollLeft=a.offsetLeft-box.clientWidth/2+a.offsetWidth/2;}
+}
+window.addEventListener("scroll",onScroll,{passive:true});
+var rz;window.addEventListener("resize",function(){clearTimeout(rz);rz=setTimeout(function(){drawEdges();onScroll();},120);});
+
+renderMeas();setShipStep(0);renderLaws();renderTabs();renderPlay();renderSeq();renderTree();setTocStep(0);renderCoal();renderLadder();renderTL();onScroll();
+drawEdges();
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(drawEdges);
+window.addEventListener("load",drawEdges);
+})();
+</script>
+</body>
+</html>
